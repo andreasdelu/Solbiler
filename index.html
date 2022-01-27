@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo-login">
-            <a class="logo" href="#"><img src="images/logo.png" alt="Solbiler ApS Logo"></a>
-            <a class="login" href="#"><img src="images/login.png" alt="login"><p>Log-ind</p></a>
-        </div>
-    </header>
     <div class="wrapper">
-        <div class="hero-pic">
+        <header>
+            <div class="logo-login">
+                <a class="logo" href="#"><img src="images/logo.png" alt="Solbiler ApS Logo"></a>
+                <a class="login" href="#"><img src="images/login.png" alt="login"><p>Log-ind</p></a>
+            </div>
+        </header>
+        <section class="hero-pic">
             <div class="formular-box">
                 <p class="overskrift">Find bilen som passer til dig</p>
                 <form class="formular" action="" method="get">
@@ -42,18 +42,28 @@
                     <div class="kufferter form-punkt">
                         <label for="kufferter">Antal kufferter</label>
                         <select name="kufferter" id="kufferter">
+                            <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
                     </div>
-                    
                     <button class="submit" type="submit">Søg</button>
                 </form>
             </div>
-        </div>
-
+        </section>
+        <section class="biler">
+            <div class="bil-punkt">
+                <img src="" alt="">
+                <p class="model"></p>
+                <p class="info"></p>
+                <div class="pris-container">
+                    <p class="pris"></p>
+                    <button class="booknu">Book Nu</button>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>
