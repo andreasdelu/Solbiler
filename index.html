@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solbiler ApS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-login">
+            <a class="logo" href="#"><img src="images/logo.png" alt="Solbiler ApS Logo"></a>
+            <a class="login" href="#"><img src="images/login.png" alt="login"><p>Log-ind</p></a>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="hero-pic">
+            <div class="formular-box">
+                <p class="overskrift">Find bilen som passer til dig</p>
+                <form class="formular" action="" method="get">
+                    <div class="afhentning form-punkt">
+                        <label for="afhentning"> Afhentning:</label>
+                        <input type="date" name="afhentning" id="afhentning">
+                    </div>
+                    <div class="aflevering form-punkt">
+                        <label for="aflevering"> Aflevering:</label>
+                        <input type="date" name="aflevering" id="aflevering">
+                    </div>
+                    <div class="personer form-punkt">
+                        <label for="personer">Antal personer:</label>
+                        <select name="personer" id="personer">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+                    <div class="kufferter form-punkt">
+                        <label for="kufferter">Antal kufferter</label>
+                        <select name="kufferter" id="kufferter">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    
+                    <button class="submit" type="submit">Søg</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
