@@ -115,13 +115,13 @@ html, body{
     font-size: 1.1rem;
     border-radius: 2000px;
     cursor: pointer;
-    transition: 0.1s;
+    transition: 0.15s;
 }
 .submit:hover{
-    background-color: var(--green);
-    color: white;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.171);
+    /* background-color: var(--green);
+    color: white; */
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
 }
 select, input{
     text-align: center;
