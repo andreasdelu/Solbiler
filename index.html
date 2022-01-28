@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solbiler ApS</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <div class="wrapper">
         <header>
             <div class="logo-login">
                 <a class="logo" href="#"><img src="images/logo.png" alt="Solbiler ApS Logo"></a>
-                <a class="login" href="#"><img src="images/login.png" alt="login"><p>Log-ind</p></a>
+                <a class="login" href="#"><img src="images/login2.png" alt="login"><p>Log-ind</p></a>
             </div>
         </header>
         <section class="hero-pic">
+            
             <div class="formular-box">
                 <p class="overskrift">Find bilen som passer til dig</p>
                 <form class="formular" action="" method="get">
@@ -40,7 +42,7 @@
                         </select>
                     </div>
                     <div class="kufferter form-punkt">
-                        <label for="kufferter">Antal kufferter</label>
+                        <label for="kufferter">Antal kufferter:</label>
                         <select name="kufferter" id="kufferter">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -55,12 +57,42 @@
         </section>
         <section class="biler">
             <div class="bil">
-                <img src="" alt="">
-                <p class="model"></p>
-                <p class="info"></p>
+                <img src="images/swift.png" alt="Suzuki Swift">
+                <p class="model"><strong>Suzuki</strong><br>Swift</p>
+                <p class="info">
+                    Kategori: Budget <br>
+                    Personer: 4 <br>
+                    Kufferter: 0
+                </p>
                 <div class="pris-container">
-                    <p class="pris"></p>
-                    <button class="booknu">Book Nu</button>
+                    <p class="pris">DKK 799</p>
+                    <button class="booknu">Book nu</button>
+                </div>
+            </div>
+            <div class="bil">
+                <img src="images/mazda.png" alt="Mazda 3">
+                <p class="model"><strong>Mazda</strong><br>3</p>
+                <p class="info">
+                    Kategori: Mellemklasse <br>
+                    Personer: 5 <br>
+                    Kufferter: 3
+                </p>
+                <div class="pris-container">
+                    <p class="pris">DKK 999</p>
+                    <button class="booknu">Book nu</button>
+                </div>
+            </div>
+            <div class="bil">
+                <img src="images/touran.png" alt="VW Touran">
+                <p class="model"><strong>Volkswagen</strong><br>Touran</p>
+                <p class="info">
+                    Kategori: Minivan <br>
+                    Personer: 7 <br>
+                    Kufferter: 4
+                </p>
+                <div class="pris-container">
+                    <p class="pris">DKK 1.099</p>
+                    <button class="booknu">Book nu</button>
                 </div>
             </div>
         </section>

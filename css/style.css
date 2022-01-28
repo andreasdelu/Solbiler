@@ -1,13 +1,18 @@
+@import url("https://use.typekit.net/zga3luw.css");
+
 :root{
     --page-width: 80vw;
 
     --green: #2fac66;
+
+    --halcom: "halcom", sans-serif;
 }
 
 html, body{
     margin: 0;
     padding: 0;
     max-width: 100vw;
+    font-family: var(--halcom);
 }
 
 .logo-login{
@@ -34,16 +39,24 @@ html, body{
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    background-color: var(--green);
+    padding: 0 20px;
+    border-radius: 2000px;
+    transition: 0.2s;
 }
 .login img{
-    height: 35px;
+    height: 20px;
     margin-right: 10px;
     vertical-align: text-bottom;
 }
 .login p{
-    color: var(--green);
-    font-family: Arial, Helvetica, sans-serif;
+    color: white;
     font-weight: bold;
+    font-size: 0.85rem;
+}
+.login:hover{
+    transform: scale(1.06);
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
 }
 
 .wrapper{
@@ -53,6 +66,7 @@ html, body{
 }
 
 .hero-pic{
+    position: relative;
     height: 400px;
     width: 100%;
     background-image: url("../images/hero.jpeg");
@@ -62,6 +76,14 @@ html, body{
     display: flex;
     align-items: center;
     margin-top: 10px;
+}
+.hero-pic::before{
+    content: '';
+    position: absolute;
+    background-color: var(--green);
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
 }
 
 .formular-box{
@@ -74,9 +96,9 @@ html, body{
     align-items: center;
     flex-direction: column;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     border-radius: 20px;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
 .overskrift{
@@ -118,8 +140,6 @@ html, body{
     transition: 0.15s;
 }
 .submit:hover{
-    /* background-color: var(--green);
-    color: white; */
     transform: scale(1.1);
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
 }
@@ -127,4 +147,63 @@ select, input{
     text-align: center;
     width: fit-content;
     margin: 5px auto;
+    border-radius: 2000px;
+    border: none;
+    padding: 3px 2px;
+}
+
+.biler{
+    margin-top: 20px;
+}
+
+.bil{
+    border-bottom: 2px solid var(--green);
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bil img{
+    width: 180px;
+}
+
+.model{
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-left: 0;
+    width: 8ch;
+}
+.info{
+    font-weight: 300;
+    width: 15ch;
+}
+.pris-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pris{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.booknu{
+    width: fit-content;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--green);
+    color: white;
+    padding: 5px 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 2000px;
+    cursor: pointer;
+}
+.booknu:hover{
+    background-color: white;
+    outline: 2px solid var(--green);
+    color: var(--green);
 }
