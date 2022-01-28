@@ -76,6 +76,7 @@ html, body{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 20px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .overskrift{
@@ -114,6 +115,13 @@ html, body{
     font-size: 1.1rem;
     border-radius: 2000px;
     cursor: pointer;
+    transition: 0.1s;
+}
+.submit:hover{
+    background-color: var(--green);
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.171);
 }
 select, input{
     text-align: center;
