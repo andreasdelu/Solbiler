@@ -61,7 +61,7 @@ function sub() {
             bilpersoner.textContent += bil[3];
             bilkufferter.textContent += bil[4];
             pris.textContent += bil[5];
-            billede.src = `../images/${bil[1]}.png`
+            billede.src = `images/${bil[1]}.png`
             biler.appendChild(klon);
         }
     }
