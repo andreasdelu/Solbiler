@@ -162,7 +162,7 @@ select, input{
     filter: invert(1);
 }
 
-.biler{
+#biler{
     margin-bottom: 50px;
 }
 
@@ -189,6 +189,9 @@ select, input{
 .info{
     font-weight: 300;
     width: 15ch;
+}
+.info p{
+    margin: 0;
 }
 .pris-container{
     display: flex;

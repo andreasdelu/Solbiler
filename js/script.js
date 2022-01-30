@@ -4,6 +4,20 @@ const aflever = document.getElementById("aflevering");
 const personer = document.getElementById("personer");
 const kufferter = document.getElementById("kufferter");
 
+const biler = document.getElementById("biler");
+const klon = document.getElementById("skabelon");
+const bilPersoner = document.getElementById("bil-personer");
+const bilKufferter = document.getElementById("bil-kufferter");
+
+const budget = {
+    model: "Suzuki",
+    brand: "Swift",
+    kategori: "Budget",
+    personer: 4,
+    kufferter: 0,
+    pris: 799
+}
+
 
 const today = new Date();
 let year = today.getFullYear();
@@ -24,5 +38,5 @@ afhent.min = afhent.value;
 aflever.min = afhent.value;
 
 function sub() {
-    let results = `${afhent.value}</br>${aflever.value}</br>${personer.value}</br>${kufferter.value}`;
+    biler.innerHTML = '';
 }
