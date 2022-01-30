@@ -20,7 +20,7 @@
             
             <div class="formular-box">
                 <p class="overskrift">Find bilen som passer til dig</p>
-                <form class="formular" action="" method="get">
+                <form class="formular" action="#" onsubmit="return false;" >
                     <div class="afhentning form-punkt">
                         <label for="afhentning"> Afhentning:</label>
                         <input type="date" name="afhentning" id="afhentning">
@@ -51,10 +51,11 @@
                             <option value="4">4</option>
                         </select>
                     </div>
-                    <button class="submit" type="submit">Søg</button>
+                    <button onclick="sub();" class="submit" type="submit">Søg</button>
                 </form>
             </div>
         </section>
+        <div id="output"></div>
         <section class="biler">
             <div class="bil">
                 <img src="images/swift.png" alt="Suzuki Swift">
@@ -95,6 +96,21 @@
                     <button class="booknu">Book nu</button>
                 </div>
             </div>
+            <template>
+                <div class="bil">
+                    <img src="images/touran.png" alt="VW Touran">
+                    <p class="model"><strong>Volkswagen</strong><br>Touran</p>
+                    <p class="info">
+                        Kategori: Minivan <br>
+                        Personer: 7 <br>
+                        Kufferter: 4
+                    </p>
+                    <div class="pris-container">
+                        <p class="pris">DKK 1.099</p>
+                        <button class="booknu">Book nu</button>
+                    </div>
+                </div>
+            </template>
         </section>
     </div>
     <script src="js/script.js"></script>
