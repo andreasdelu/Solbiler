@@ -176,15 +176,23 @@ select, input{
     margin: 0 auto;
 }
 
-.bil img{
+.billede{
     width: 180px;
 }
 
+.navn{
+    width: 8ch;
+    margin-left: 0;
+}
 .model{
     font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+.brand{
+    font-size: 1.2rem;
     font-weight: 400;
-    margin-left: 0;
-    width: 8ch;
+    margin: 0;
 }
 .info{
     font-weight: 300;
