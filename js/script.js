@@ -34,7 +34,7 @@ const biler = [
         kufferter: 4,
         pris: "1099,00"
     }
-]
+];
 
 const today = new Date();
 let year = today.getFullYear();
