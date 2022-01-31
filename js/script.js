@@ -1,13 +1,12 @@
-
 const afhent = document.getElementById("afhentning");
 const aflever = document.getElementById("aflevering");
 const personer = document.getElementById("personer");
 const kufferter = document.getElementById("kufferter");
 
-const biler = document.getElementById("biler");
+const output = document.getElementById("biler");
 const skabelon = document.getElementById("skabelon");
 
-const liste = [
+const biler = [
     {
         billede: "images/biler/swift.png",
         brand: "Suzuki",
@@ -56,8 +55,8 @@ afhent.min = afhent.value;
 aflever.min = afhent.value;
 
 function search() {
-    biler.innerHTML = '';
-    for (const bil of liste) {
+    output.innerHTML = '';
+    for (const bil of biler) {
         if (bil.personer >= personer.value && bil.kufferter >= kufferter.value) {
             const klon = skabelon.content.cloneNode(true);
             const billede = klon.querySelector(".billede");
@@ -75,12 +74,34 @@ function search() {
             bilpersoner.textContent += bil.personer;
             bilkufferter.textContent += bil.kufferter;
             pris.textContent += bil.pris;
-            biler.appendChild(klon);
+            output.appendChild(klon);
         }
     }
-    if (biler.innerHTML == '') {
-        biler.insertAdjacentHTML("afterbegin", '<h2>Ingen biler fundet :(</h2>')
+    if (output.innerHTML == '') {
+        output.insertAdjacentHTML("afterbegin", '<h2>Ingen biler fundet :(</h2>')
     }
 }
 
-search();
+function loadBiler() {
+    output.innerHTML = '';
+    for (const bil of biler) {
+        const klon = skabelon.content.cloneNode(true);
+        const billede = klon.querySelector(".billede");
+        const model = klon.querySelector(".model");
+        const brand = klon.querySelector(".brand");
+        const kategori = klon.querySelector(".bil-kategori");
+        const bilpersoner = klon.querySelector(".bil-personer");
+        const bilkufferter = klon.querySelector(".bil-kufferter");
+        const pris = klon.querySelector(".pris");
+
+        billede.src = bil.billede;
+        model.textContent += bil.model;
+        brand.textContent += bil.brand;
+        kategori.textContent += bil.kategori;
+        bilpersoner.textContent += bil.personer;
+        bilkufferter.textContent += bil.kufferter;
+        pris.textContent += bil.pris;
+        output.appendChild(klon);
+    }
+}
+loadBiler();
