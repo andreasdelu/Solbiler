@@ -125,9 +125,9 @@ if (window.location.pathname === '/order.html') {
         bilkufferter.textContent += biler[ordernum].kufferter;
 
         vogn.appendChild(klon);
-        vogn.insertAdjacentHTML("beforeend", biler[ordernum].pris + "<br>");
-        vogn.insertAdjacentHTML("beforeend", dataStorage.getItem("afhent") + "<br>");
-        vogn.insertAdjacentHTML("beforeend", dataStorage.getItem("aflever"));
+        vogn.insertAdjacentHTML("beforeend", "DKK "+biler[ordernum].pris + "<br>");
+        vogn.insertAdjacentHTML("beforeend", "Afhentning: "+dataStorage.getItem("afhent") + "<br>");
+        vogn.insertAdjacentHTML("beforeend", "Aflevering: "+dataStorage.getItem("aflever"));
     }
     fillCart();
 }
