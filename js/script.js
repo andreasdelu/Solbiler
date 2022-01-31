@@ -14,7 +14,7 @@ const biler = [
         kategori: "Budget",
         personer: 4,
         kufferter: 0,
-        pris: 799
+        pris: "799,00"
     },
     {
         billede: "images/biler/3.png",
@@ -23,7 +23,7 @@ const biler = [
         kategori: "Mellemklasse",
         personer: 5,
         kufferter: 3,
-        pris: 999
+        pris: "999,00"
     },
     {
         billede: "images/biler/touran.png",
@@ -32,7 +32,7 @@ const biler = [
         kategori: "Minivan",
         personer: 7,
         kufferter: 4,
-        pris: 1099
+        pris: "1099,00"
     }
 ]
 
