@@ -228,3 +228,8 @@ select, input{
     outline: 2px solid var(--green);
     color: var(--green);
 }
+h2{
+    margin: 50px auto;
+    text-align: center;
+    color: var(--green);
+}

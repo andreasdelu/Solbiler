@@ -68,15 +68,18 @@ function search() {
             const bilkufferter = klon.querySelector(".bil-kufferter");
             const pris = klon.querySelector(".pris");
 
+            billede.src = bil.billede;
             model.textContent += bil.model;
             brand.textContent += bil.brand;
             kategori.textContent += bil.kategori;
             bilpersoner.textContent += bil.personer;
             bilkufferter.textContent += bil.kufferter;
             pris.textContent += bil.pris;
-            billede.src = bil.billede;
             biler.appendChild(klon);
         }
+    }
+    if (biler.innerHTML == '') {
+        biler.insertAdjacentHTML("afterbegin", '<h2>Ingen biler fundet :(</h2>')
     }
 }
 
