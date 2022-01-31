@@ -7,21 +7,35 @@ const kufferter = document.getElementById("kufferter");
 const biler = document.getElementById("biler");
 const skabelon = document.getElementById("skabelon");
 
-const budget = {
-    model: "Suzuki",
-    brand: "Swift",
-    kategori: "Budget",
-    personer: 4,
-    kufferter: 0,
-    pris: 799
-}
-
-const budget1 = ["Suzuki", "Swift", "Budget", 4, 0, 799];
-const mellem1 = ["Mazda", "3", "Mellemklasse", 5, 3, 999];
-const mini1 = ["Volkswagen", "Touran", "Minivan", 7, 4, 1099];
-
-const bilListe = [budget1, mellem1, mini1];
-
+const liste = [
+    {
+        billede: "images/biler/swift.png",
+        brand: "Suzuki",
+        model: "Swift",
+        kategori: "Budget",
+        personer: 4,
+        kufferter: 0,
+        pris: 799
+    },
+    {
+        billede: "images/biler/3.png",
+        brand: "Mazda",
+        model: "3",
+        kategori: "Mellemklasse",
+        personer: 5,
+        kufferter: 3,
+        pris: 999
+    },
+    {
+        billede: "images/biler/touran.png",
+        brand: "Volkswagen",
+        model: "Touran",
+        kategori: "Minivan",
+        personer: 7,
+        kufferter: 4,
+        pris: 1099
+    }
+]
 
 const today = new Date();
 let year = today.getFullYear();
@@ -41,11 +55,10 @@ aflever.value = `${year}-${month}-${day}`;
 afhent.min = afhent.value;
 aflever.min = afhent.value;
 
-function sub() {
+function search() {
     biler.innerHTML = '';
-    for (const bil of bilListe) {
-        if (bil[3] >= personer.value && bil[4] >= kufferter.value) {
-            console.log(bil);
+    for (const bil of liste) {
+        if (bil.personer >= personer.value && bil.kufferter >= kufferter.value) {
             const klon = skabelon.content.cloneNode(true);
             const billede = klon.querySelector(".billede");
             const model = klon.querySelector(".model");
@@ -55,14 +68,16 @@ function sub() {
             const bilkufferter = klon.querySelector(".bil-kufferter");
             const pris = klon.querySelector(".pris");
 
-            model.textContent += bil[0];
-            brand.textContent += bil[1];
-            kategori.textContent += bil[2];
-            bilpersoner.textContent += bil[3];
-            bilkufferter.textContent += bil[4];
-            pris.textContent += bil[5];
-            billede.src = `images/${bil[1]}.png`
+            model.textContent += bil.model;
+            brand.textContent += bil.brand;
+            kategori.textContent += bil.kategori;
+            bilpersoner.textContent += bil.personer;
+            bilkufferter.textContent += bil.kufferter;
+            pris.textContent += bil.pris;
+            billede.src = bil.billede;
             biler.appendChild(klon);
         }
     }
 }
+
+search();
