@@ -236,8 +236,20 @@ h2{
     text-align: center;
     color: var(--green);
 }
-#darkmode{
-    position: absolute;
-    top: 10px;
-    right: 30px;
+.cart{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    transition: 0.2s;
+}
+.cart img{
+    width: 100%;
+}
+.cart:hover{
+    transform: scale(1.2);
+}
+.isShown{
+    display: block;
 }

@@ -72,8 +72,6 @@ function bookNu(order)
     window.location.href = "/order.html";
 }
 
-
-
 function fixDate(dato) {
     if (dato == "afhent") {
         let split = afhent.value.split("-");
@@ -85,5 +83,9 @@ function fixDate(dato) {
     }
 }
 
+if (dataStorage.getItem("ordernum") != null) {
+    const cart = document.querySelector(".cart");
+    cart.classList.add("isShown");
+}
 
 
