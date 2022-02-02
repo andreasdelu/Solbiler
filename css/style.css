@@ -63,6 +63,7 @@ html, body{
     width: var(--page-width);
     max-width: 1100px;
     margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .hero-pic{
@@ -164,7 +165,9 @@ select, input{
 }
 
 #biler{
+    margin: 0 auto;
     margin-bottom: 50px;
+    max-width: 900px;
 }
 
 .bil{
@@ -173,7 +176,7 @@ select, input{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -236,20 +239,59 @@ h2{
     text-align: center;
     color: var(--green);
 }
-.cart{
+.shopping-cart{
     display: none;
     position: fixed;
-    bottom: 20px;
+    bottom: 50vh;
     right: 20px;
     width: 60px;
     transition: 0.2s;
+    animation: pulse 2s ease infinite forwards;
 }
-.cart img{
+.shopping-cart img{
     width: 100%;
 }
-.cart:hover{
-    transform: scale(1.2);
+/* .shopping-cart:hover{
+    animation: stop;
+    transform: scale(1.15);
+} */
+
+@keyframes pulse {
+    from{transform: scale(1)}
+    50%{transform: scale(1.1)}
+    to{transform: scale(1)}
 }
 .isShown{
     display: block;
+}
+
+#clear{
+    display: block;
+    margin-top: 20px;
+}
+#cart{
+    max-width: 600px;
+}
+#cart h1{
+    margin: 10px 0;
+    padding: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    box-sizing: border-box;
+}
+.bestilling{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 20px 0;
+}
+.bestilling-pris{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 20px 0;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+}
+.bestilling-info{
+    margin-bottom: 10px;
 }

@@ -6,7 +6,8 @@ let biler = [
         kategori: "Budget",
         personer: 4,
         kufferter: 0,
-        pris: "799,00",
+        tillaeg: 0,
+        pris: 495,
         nummer: 0
     },
     {
@@ -16,7 +17,8 @@ let biler = [
         kategori: "Mellemklasse",
         personer: 5,
         kufferter: 3,
-        pris: "999,00",
+        tillaeg: 60,
+        pris: 495,
         nummer: 1
     },
     {
@@ -26,7 +28,8 @@ let biler = [
         kategori: "Minivan",
         personer: 7,
         kufferter: 4,
-        pris: "1099,00",
+        tillaeg: 105,
+        pris: 495,
         nummer: 2
     }
 ];

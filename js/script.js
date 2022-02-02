@@ -6,11 +6,11 @@ const kufferter = document.getElementById("kufferter");
 
 const skabelon = document.getElementById("skabelon");
 
-
 const today = new Date();
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
 let day = today.getDate();
+
 
 if (month <= 9) {
     month = "0" + month;
@@ -22,10 +22,24 @@ if (day <=9) {
 
 dataStorage = window.sessionStorage;
 
+
 afhent.value = `${year}-${month}-${day}`;
 aflever.value = `${year}-${month}-${day}`;
 afhent.min = afhent.value;
 aflever.min = afhent.value;
+
+afhent.addEventListener("change", function()
+{
+    aflever.min, aflever.value = afhent.value;
+    beregnAntalLejedage();
+});
+aflever.addEventListener("change", function()
+{
+    if (aflever.value < afhent.value) {
+        aflever.value = afhent.value;
+    }
+    beregnAntalLejedage();
+});
 
 function search() 
 {
@@ -53,7 +67,9 @@ function search()
             kategori.textContent += bil.kategori;
             bilpersoner.textContent += bil.personer;
             bilkufferter.textContent += bil.kufferter;
-            pris.textContent += bil.pris;
+
+            const udregnetPris = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
+            pris.textContent += udregnetPris;
             output.appendChild(klon);
         }
     }
@@ -62,11 +78,12 @@ function search()
         output.insertAdjacentHTML("afterbegin", '<h2>Ingen biler fundet :(</h2>')
     }
 }
-search();  
+search();
 
 function bookNu(order) 
 {
     dataStorage.setItem("ordernum", order);
+    dataStorage.setItem("lejedage", beregnAntalLejedage());
     fixDate("afhent");
     fixDate("aflever");
     window.location.href = "/order.html";
@@ -84,8 +101,21 @@ function fixDate(dato) {
 }
 
 if (dataStorage.getItem("ordernum") != null) {
-    const cart = document.querySelector(".cart");
+    const cart = document.querySelector(".shopping-cart");
     cart.classList.add("isShown");
 }
 
+
+
+function beregnAntalLejedage(){
+    const dato1 = new Date(`${afhent.value}`);
+    const dato2 = new Date(`${aflever.value}`);
+    const forskelTid = Math.abs(dato2 - dato1);
+    let forskelDage = Math.ceil(forskelTid / (1000 * 60 * 60 * 24) + 1);
+    return forskelDage;
+}
+
+function beregnLejeudgift(bilPris, bilTillaeg, moms) {
+    return (bilPris + ((bilTillaeg + 100) * beregnAntalLejedage())) * moms;
+}
 

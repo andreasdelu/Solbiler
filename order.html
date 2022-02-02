@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,7 @@
             </div>
         </header>
         <section class="hero-pic" style="height: 200px;"></section>
-        <h1>Bestilling:</h1>
+        
         <template id="skabelon">
             <div class="bil">
                 <img class="billede" src="" alt="Billede af udlejningsbil">
@@ -32,7 +32,24 @@
                 </div>
             </div>
         </template>
-        <section id="cart"></section>
+        <template id="bestilling-info">
+            <div class="bestilling-info">
+                <div class="bestilling-afhent bestilling">Afhentning: </div>
+                <div class="bestilling-aflever bestilling">Aflevering: </div>
+                <div class="bestilling-dage bestilling">Antal dage: </div>
+                <div class="bestilling-grundpris bestilling">Grundpris + forsikring: DKK </div>
+                <div class="bestilling-lejepris bestilling">Lejepris pr. dag: DKK </div>
+                <div class="bestilling-tillaeg bestilling">Klassetillæg: DKK </div>
+                <div class="bestilling-exmoms bestilling">Ex. Moms: DKK </div>
+                <div class="bestilling-pris">DKK </div>
+            </div>
+        </template>
+        <section id="cart">
+            <a id="clear" href="javascript:clearCart()">Ryd bestilling</a>
+            <h1>Bestilling:</h1>
+
+        </section>
+        <button class="booknu" onclick="bestil();">Bestil</button>
     </div>
     <script type="text/javascript" src="js/biler.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
