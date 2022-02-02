@@ -71,7 +71,7 @@ function fillCart() {
 function clearCart() {
     dataStorage.clear();
     vogn.innerHTML = '';
-    window.location.href = "/solbiler/index.html";
+    window.location.href = "index.html";
     
 }
 

@@ -20,8 +20,6 @@ if (day <=9) {
     day = "0" + day;
 }
 
-dataStorage = window.sessionStorage;
-
 
 afhent.value = `${year}-${month}-${day}`;
 aflever.value = `${year}-${month}-${day}`;
@@ -30,35 +28,35 @@ aflever.min = afhent.value;
 
 afhent.addEventListener("change", function()
 {
-    if (afhent.value < afhent.min) {
+    if (afhent.value < afhent.min) 
+    {
         afhent.value=afhent.min;
     }
     aflever.min, aflever.value = afhent.value;
-    beregnAntalLejedage();
 });
 aflever.addEventListener("change", function()
 {
-    if (aflever.value < afhent.value) {
+    if (aflever.value < afhent.value) 
+    {
         aflever.value = afhent.value;
     }
-    beregnAntalLejedage();
+    
 });
 
+dataStorage = window.sessionStorage;
 let biler;
 
-fetch('./biler.json').then(response => {
-    return response.json();
-  }).then(data => {
-    // Work with JSON data here
-    biler = data;
+async function loadBiler() {
+    const response = await fetch('./biler.json');
+    biler = await response.json();
     search();
-  }).catch(err => {
-    // Do something for an error here
-    console.log("Error loading cars");
-  });
+}
+
+loadBiler();
 
 function search() 
 {
+    beregnAntalLejedage();
     const output = document.getElementById("biler"); 
     output.innerHTML = '';
     for (const bil of biler) 
@@ -102,7 +100,7 @@ function bookNu(order)
     dataStorage.setItem("lejedage", beregnAntalLejedage());
     fixDate("afhent");
     fixDate("aflever");
-    window.location.href = "/solbiler/order.html";
+    window.location.href = "order.html";
 }
 
 function fixDate(dato) {
@@ -124,10 +122,10 @@ if (dataStorage.getItem("ordernum") != null) {
 
 
 function beregnAntalLejedage(){
-    const dato1 = new Date(`${afhent.value}`);
-    const dato2 = new Date(`${aflever.value}`);
-    const forskelTid = Math.abs(dato2 - dato1);
-    let forskelDage = Math.ceil(forskelTid / (1000 * 60 * 60 * 24) + 1);
+    const afhentDato = new Date(afhent.value);
+    const afleverDato = new Date(aflever.value);
+    const forskelTid = Math.abs(afleverDato - afhentDato);
+    const forskelDage = Math.ceil(forskelTid / (1000 * 60 * 60 * 24) + 1);
     return forskelDage;
 }
 
