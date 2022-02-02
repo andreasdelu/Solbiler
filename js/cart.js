@@ -11,6 +11,20 @@ const afhent = dataStorage.getItem("afhent");
 const aflever = dataStorage.getItem("aflever");
 
 const ordernum = dataStorage.getItem("ordernum");
+
+let biler;
+
+fetch('./biler.json').then(response => {
+    return response.json();
+  }).then(data => {
+    // Work with JSON data here
+    biler = data;
+    fillCart();
+  }).catch(err => {
+    // Do something for an error here
+    console.log("Error loading cars");
+  });
+
 function fillCart() {
     const klon = skabelon.content.cloneNode(true);
     const billede = klon.querySelector(".billede");
@@ -52,12 +66,12 @@ function fillCart() {
 
     prisSum = beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25);
 }
-fillCart();
+
 
 function clearCart() {
     dataStorage.clear();
     vogn.innerHTML = '';
-    window.location.href = "/index.html";
+    window.location.href = "/solbiler/index.html";
     
 }
 

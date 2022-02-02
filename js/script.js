@@ -44,6 +44,19 @@ aflever.addEventListener("change", function()
     beregnAntalLejedage();
 });
 
+let biler;
+
+fetch('./biler.json').then(response => {
+    return response.json();
+  }).then(data => {
+    // Work with JSON data here
+    biler = data;
+    search();
+  }).catch(err => {
+    // Do something for an error here
+    console.log("Error loading cars");
+  });
+
 function search() 
 {
     const output = document.getElementById("biler"); 
@@ -81,7 +94,7 @@ function search()
         output.insertAdjacentHTML("afterbegin", '<h2>Ingen biler fundet :(</h2>')
     }
 }
-search();
+
 
 function bookNu(order) 
 {
@@ -89,7 +102,7 @@ function bookNu(order)
     dataStorage.setItem("lejedage", beregnAntalLejedage());
     fixDate("afhent");
     fixDate("aflever");
-    window.location.href = "/order.html";
+    window.location.href = "/solbiler/order.html";
 }
 
 function fixDate(dato) {
