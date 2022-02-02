@@ -14,16 +14,13 @@ const ordernum = dataStorage.getItem("ordernum");
 
 let biler;
 
-fetch('./biler.json').then(response => {
-    return response.json();
-  }).then(data => {
-    // Work with JSON data here
-    biler = data;
+async function loadBiler() {
+    const response = await fetch('./biler.json');
+    biler = await response.json();
     fillCart();
-  }).catch(err => {
-    // Do something for an error here
-    console.log("Error loading cars");
-  });
+}
+
+loadBiler();
 
 function fillCart() {
     const klon = skabelon.content.cloneNode(true);
