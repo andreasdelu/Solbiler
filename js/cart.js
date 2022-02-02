@@ -56,10 +56,10 @@ function fillCart() {
     infoafhent.textContent += afhent;
     infoaflever.textContent += aflever;
     infodage.textContent += lejedage;
-    infogrundpris.textContent += biler[ordernum].pris;
-    infolejepris.textContent += 100;
-    infotillaeg.textContent += biler[ordernum].tillaeg;
-    infoexmoms.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1);
+    infogrundpris.textContent += biler[ordernum].pris + ",-";
+    infolejepris.textContent += 100 + ",-";
+    infotillaeg.textContent += biler[ordernum].tillaeg + ",-";
+    infoexmoms.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1) + ",-";
     infopris.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25) + ",-";
 
     vogn.appendChild(infoklon);

@@ -85,7 +85,7 @@ function search()
             bilkufferter.textContent += bil.kufferter;
 
             const udregnetPris = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
-            pris.textContent += udregnetPris;
+            pris.textContent += udregnetPris + ",-";
             output.appendChild(klon);
         }
     }

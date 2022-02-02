@@ -215,6 +215,7 @@ select, input{
 .pris{
     font-weight: 500;
     font-size: 1rem;
+    text-align: center;
 }
 .booknu{
     width: fit-content;
