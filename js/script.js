@@ -40,10 +40,10 @@ aflever.addEventListener("change", function()
     {
         aflever.value = afhent.value;
     }
-    
 });
 
 dataStorage = window.sessionStorage;
+
 let biler;
 
 async function loadBiler() {
