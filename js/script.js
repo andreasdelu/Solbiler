@@ -30,6 +30,9 @@ aflever.min = afhent.value;
 
 afhent.addEventListener("change", function()
 {
+    if (afhent.value < afhent.min) {
+        afhent.value=afhent.min;
+    }
     aflever.min, aflever.value = afhent.value;
     beregnAntalLejedage();
 });
