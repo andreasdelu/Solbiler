@@ -46,7 +46,7 @@ function fillCart() {
     infolejepris.textContent += 100;
     infotillaeg.textContent += biler[ordernum].tillaeg;
     infoexmoms.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1);
-    infopris.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25);
+    infopris.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25) + ",-";
 
     vogn.appendChild(infoklon);
 
@@ -62,7 +62,7 @@ function clearCart() {
 }
 
 function beregnLejeudgift(bilPris, bilTillaeg, moms) {
-    return (bilPris + ((bilTillaeg + 100) * lejedage))*moms;
+    return Math.round((bilPris + ((bilTillaeg + 100) * lejedage))*moms);
 }
 
 let bestilling ={};
@@ -83,7 +83,7 @@ function bestil(){
 
         const bestringify = JSON.stringify(bestilling);
         
-        readJSON(bestringify);
+        /* readJSON(bestringify); */
         
         
     }

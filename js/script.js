@@ -119,6 +119,6 @@ function beregnAntalLejedage(){
 }
 
 function beregnLejeudgift(bilPris, bilTillaeg, moms) {
-    return (bilPris + ((bilTillaeg + 100) * beregnAntalLejedage())) * moms;
+    return Math.round((bilPris + ((bilTillaeg + 100) * beregnAntalLejedage())) * moms);
 }
 
