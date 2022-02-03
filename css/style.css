@@ -90,7 +90,7 @@ html, body{
 
 .formular-box{
     background-color: var(--green);
-    background: linear-gradient(#2fac66, #2aa35e);
+    background: linear-gradient(#2fac66, #2eaf66);
     width: 400px;
     height: 300px;
     margin-left: 50px;
@@ -296,8 +296,7 @@ h2{
     margin-bottom: 10px;
 }
 footer{
-    background-color: var(--green);
-    color: white;
+    color: var(--green);
     text-align: center;
     padding: 5px 0;
 }
@@ -319,7 +318,7 @@ footer{
         min-width: fit-content;
     }
     .billede{
-        width: 250px;
+        width: 220px;
     }
     .brand,.model{
         text-align: center;
