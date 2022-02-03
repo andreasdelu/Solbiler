@@ -26,6 +26,7 @@ aflever.value = `${year}-${month}-${day}`;
 afhent.min = afhent.value;
 aflever.min = afhent.value;
 
+
 afhent.addEventListener("change", function()
 {
     if (afhent.value < afhent.min) 

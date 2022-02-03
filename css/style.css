@@ -22,6 +22,7 @@ html, body{
     margin: 10px auto;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .logo{
@@ -64,7 +65,6 @@ html, body{
     width: var(--page-width);
     max-width: 1100px;
     margin: 0 auto;
-    margin-bottom: 100px;
 }
 
 .hero-pic{
@@ -90,6 +90,7 @@ html, body{
 
 .formular-box{
     background-color: var(--green);
+    background: linear-gradient(#2fac66, #2aa35e);
     width: 400px;
     height: 300px;
     margin-left: 50px;
@@ -249,14 +250,11 @@ h2{
     width: 60px;
     transition: 0.2s;
     animation: pulse 2s ease infinite forwards;
+    z-index: 9999;
 }
 .shopping-cart img{
     width: 100%;
 }
-/* .shopping-cart:hover{
-    animation: stop;
-    transform: scale(1.15);
-} */
 
 @keyframes pulse {
     from{transform: scale(1)}
@@ -296,4 +294,140 @@ h2{
 }
 .bestilling-info{
     margin-bottom: 10px;
+}
+footer{
+    background-color: var(--green);
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.order{
+    margin-bottom: 50px;
+}
+.order .booknu{
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 735px){
+    .bil{
+        flex-direction: column;
+        justify-content: center;
+        max-width: 50vw;
+        min-width: fit-content;
+    }
+    .billede{
+        width: 250px;
+    }
+    .brand,.model{
+        text-align: center;
+    }
+    .brand{
+        margin-top: 10px;
+    }
+    .info{
+        width: fit-content;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .formular{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-top: 0;
+    }
+    .formular-box{
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+        box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.2);
+    }
+    .overskrift{
+        font-size: 1.3rem;
+        padding: 20px 20px 0 20px;
+        margin: 0;
+    }
+    .hero-pic{
+        margin-top: 20px;
+        height: fit-content;
+        padding: 10px 0;
+    }
+
+    .order .bil{
+        margin-left: 0;
+        margin-right: auto;
+        align-items: flex-start;
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+    .order .billede{
+        width: 200px;
+        margin-right: auto;
+    }
+    .order .brand, .order .model{
+        text-align: left;
+        margin-right: auto;
+    }
+    .order .info{
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .bestilling{
+        font-size: 1.1rem;
+    }
+    
+}
+@media screen and (max-width: 435px){
+    .billede{
+        width: 220px;
+    }
+    .hero-pic{
+        height: fit-content;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .hero-pic::before{
+        content: '';
+        background: white;
+        opacity: 1;
+    }
+    .login p{
+        display: none;
+    }
+    .login{
+        padding: 0;
+    }
+    .login img{
+        margin: 0;
+        margin: 10px 15px;
+    }
+    .formular-box{
+        width: 100%;
+        box-shadow: none;
+    }
+    .overskrift{
+        max-width: 15ch;
+    }
+    .order .hero-pic{
+        display: none;
+    }
+    #cart{
+        padding-top: 10px;
+    }
+    #clear{
+        margin-bottom: 30px;
+    }
+    .order .brand, .order .model{
+        text-align: left;
+        margin-right: auto;
+        font-size: 1.4rem;
+    }
+    .order .info{
+        text-align: left;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
 }
