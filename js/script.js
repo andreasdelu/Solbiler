@@ -46,14 +46,29 @@ aflever.addEventListener("change", function()
 dataStorage = window.sessionStorage;
 
 let biler;
+let eur;
 
 async function loadBiler() {
     const response = await fetch('./biler.json');
     biler = await response.json();
+    await loadValuta();
     search();
 }
 
 loadBiler();
+
+const api = "https://api.exchangerate-api.com/v4/latest/EUR";
+
+
+async function loadValuta(valuta) {
+    const fetched = await fetch(`${api}`);
+    const currency = await fetched.json();
+    eur = currency.rates.DKK;
+    console.log(eur);
+}
+
+
+let convertValuta = false;
 
 function search() 
 {
@@ -84,7 +99,9 @@ function search()
             bilkufferter.textContent += bil.kufferter;
 
             const udregnetPris = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
-            pris.textContent += udregnetPris + ",-";
+            if (convertValuta) {
+                pris.textContent += "EUR " + (udregnetPris/eur).toFixed(2);
+            } else pris.textContent += "DKK " + udregnetPris + ",-";
             output.appendChild(klon);
         }
     }
