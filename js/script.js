@@ -2,6 +2,7 @@ const afhent = document.getElementById("afhentning");
 const aflever = document.getElementById("aflevering");
 const personer = document.getElementById("personer");
 const kufferter = document.getElementById("kufferter");
+const convert = document.getElementById("valuta");
 
 
 const skabelon = document.getElementById("skabelon");
@@ -46,7 +47,6 @@ aflever.addEventListener("change", function()
 dataStorage = window.sessionStorage;
 
 let biler;
-let eur;
 
 async function loadBiler() {
     const response = await fetch('./biler.json');
@@ -57,18 +57,19 @@ async function loadBiler() {
 
 loadBiler();
 
-const api = "https://api.exchangerate-api.com/v4/latest/EUR";
+const api = "https://api.exchangerate-api.com/v4/latest/DKK";
 
+let valuta;
 
-async function loadValuta(valuta) {
+async function loadValuta() {
     const fetched = await fetch(`${api}`);
     const currency = await fetched.json();
-    eur = currency.rates.DKK;
-    console.log(eur);
+    valuta = currency.rates;
 }
 
+convert.addEventListener("change", function(){search();});
 
-let convertValuta = false;
+
 
 function search() 
 {
@@ -99,10 +100,10 @@ function search()
             bilkufferter.textContent += bil.kufferter;
 
             const udregnetPris = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
-            if (convertValuta) {
-                pris.textContent += "EUR " + (udregnetPris/eur).toFixed(2);
-            } else pris.textContent += "DKK " + udregnetPris + ",-";
+            pris.textContent += convert.value + " " + Math.round(udregnetPris * valuta[convert.value]);
             output.appendChild(klon);
+
+            
         }
     }
     if (output.innerHTML == '') 
