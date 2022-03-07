@@ -123,8 +123,13 @@ function search()
 
 function bookNu(order) 
 {
+    let lejedage = beregnAntalLejedage();
+
+    if (order != dataStorage.getItem("ordernum")) {
+        dataStorage.clear();
+    }
     dataStorage.setItem("ordernum", order);
-    dataStorage.setItem("lejedage", beregnAntalLejedage());
+    dataStorage.setItem("lejedage", lejedage);
     fixDate("afhent");
     fixDate("aflever");
     window.location.href = "order.html";

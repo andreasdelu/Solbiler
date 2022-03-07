@@ -78,6 +78,10 @@ function beregnLejeudgift(bilPris, bilTillaeg, moms) {
 }
 
 
+
+/* Tilføj, fjern og gem ekstraudstyr */
+
+
 const airbag = document.getElementById("airbag");
 const kidjail = document.getElementById("kidjail");
 const spoiler = document.getElementById("spoiler");
@@ -85,100 +89,155 @@ const tires = document.getElementById("tires");
 const muskel = document.getElementById("muskel");
 
 let udstyrListe = []
+let nyPris;
+
+window.addEventListener("load", () => {
+    const udstyr = document.getElementById("udstyr");
+    const pris = document.querySelector(".bestilling-pris");
+    udstyr.innerText = 'Ingen';
+    if (dataStorage.getItem("valgtUdstyr") != null && JSON.parse(dataStorage.getItem("valgtUdstyr")).length != 0){
+        udstyrListe = JSON.parse(dataStorage.getItem("valgtUdstyr"));
+        udstyr.innerText = '';
+        
+        udstyrListe.forEach(item => {
+            udstyr.insertAdjacentHTML("beforeend", `<div class="udstyr">${item.txt}</div>`)
+            document.getElementById(`${item.name}`).checked = true;
+            nyPris += item.pris;
+            pris.innerHTML = `DKK ${nyPris},-`;
+        })
+    }
+})
+
+
 
 airbag.addEventListener("change", function(){
+    const obj = {
+        name: "airbag",
+        pris: 200, 
+        txt: "Airbag + DKK 200,-"
+    }
     if (this.checked) {
-        udstyrListe.push("Airbag");
-        addExtra(200);
+        addExtra(obj);
     }
     else {
-        let myIndex = udstyrListe.indexOf('Airbag');
-        if (myIndex !== -1) {
-            udstyrListe.splice(myIndex, 1);
-        }
-        removeExtra(200);
+        removeExtra(obj);
     }
 })
 kidjail.addEventListener("change", function(){
+    const obj = {
+        name: "kidjail",
+        pris: 3000, 
+        txt: "Børnefængsel + DKK 3000,-"
+    }
     if (this.checked) {
-        udstyrListe.push("Børnefængsel");
-        addExtra(3000);
+        addExtra(obj);
     }
     else {
-        let myIndex = udstyrListe.indexOf('Børnefængsel');
-        if (myIndex !== -1) {
-            udstyrListe.splice(myIndex, 1);
-        }
-        removeExtra(3000);
+        removeExtra(obj);
     }
 })
 spoiler.addEventListener("change", function(){
+    const obj = {
+        name: "spoiler",
+        pris: 500, 
+        txt: "Fed spoiler + DKK 500,-"
+    }
     if (this.checked) {
-        udstyrListe.push("Fed spoiler");
-        addExtra(500);
+        addExtra(obj);
     }
     else {
-        let myIndex = udstyrListe.indexOf('Fed spoiler');
-        if (myIndex !== -1) {
-            udstyrListe.splice(myIndex, 1);
-        }
-        removeExtra(500);
+        removeExtra(obj);
     }
 })
 tires.addEventListener("change", function(){
+    const obj = {
+        name: "tires",
+        pris: 999, 
+        txt: "Store dæk + DKK 999,-"
+    }
     if (this.checked) {
-        udstyrListe.push("Store dæk");
-        addExtra(999);
+        addExtra(obj);
     }
     else {
-        let myIndex = udstyrListe.indexOf('Store dæk');
-        if (myIndex !== -1) {
-            udstyrListe.splice(myIndex, 1);
-        }
-        removeExtra(999);
+        removeExtra(obj);
     }
 })
 muskel.addEventListener("change", function(){
+    const obj = {
+        name: "muskel",
+        pris: 50000, 
+        txt: "Muskelhund på bagsædet + DKK 50.000,-"
+    }
     if (this.checked) {
-        udstyrListe.push("Muskelhund på bagsædet");
-        addExtra(50000);
+        addExtra(obj);
     }
     else {
-        let myIndex = udstyrListe.indexOf('Muskelhund på bagsædet');
-        if (myIndex !== -1) {
-            udstyrListe.splice(myIndex, 1);
-        }
-        removeExtra(50000);
+        removeExtra(obj);
     }
 })
 
 
-let nyPris;
 
 
 function addExtra(extra) { 
     const pris = document.querySelector(".bestilling-pris");
     const udstyr = document.getElementById("udstyr");
+    udstyrListe.push(extra);
     udstyr.innerText = '';
-    nyPris += extra;
+    nyPris += extra.pris;
     pris.innerHTML = `DKK ${nyPris},-`;
     udstyrListe.forEach(item => {
-        udstyr.insertAdjacentHTML("beforeend", item + "<br><br>")
+        udstyr.insertAdjacentHTML("beforeend", `<div class="udstyr">${item.txt}</div>`)
     })
+    dataStorage.setItem("valgtUdstyr", JSON.stringify(udstyrListe));
 }
 
 function removeExtra(extra) {
     const pris = document.querySelector(".bestilling-pris");
-    nyPris -= extra;
+    udstyrListe = udstyrListe.filter( item => item.name !== extra.name);
+    nyPris -= extra.pris;
     udstyr.innerText = '';
     pris.innerHTML = `DKK ${nyPris},-`;
     udstyrListe.forEach(item => {
-        udstyr.insertAdjacentHTML("beforeend", item + "<br><br>")
+        udstyr.insertAdjacentHTML("beforeend", `<div class="udstyr">${item.txt}</div>`)
     })
 
     if (udstyrListe.length == 0) {
         udstyr.innerText = 'Ingen';
     }
+    dataStorage.setItem("valgtUdstyr", JSON.stringify(udstyrListe));
+    
+}
+
+
+const orderForm = document.getElementById("user-form")
+
+orderForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    bestil();
+})
+
+function bestil() {
+    let formData = new FormData(orderForm);
+    let kunde = {
+        navn: formData.get("navn"),
+        mail: formData.get("mail"),
+        telefon: formData.get("telefon"),
+        adresse: formData.get("adresse"),
+        postnummer: formData.get("postnummer"),
+        by: formData.get("by")
+    }
+    let valgtUdstyr = [];
+    udstyrListe.forEach(item => {
+        valgtUdstyr.push(item.name);
+    })
+    let orderInfo = {
+        kunde,
+        bil: ordernum,
+        valgtUdstyr,
+        pris: nyPris
+    };
+    orderForm.insertAdjacentText("afterend", JSON.stringify(orderInfo));
 }
 
 

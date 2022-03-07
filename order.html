@@ -49,8 +49,10 @@
         <div id="order-wrap">
             <section id="cart">
                 <h1>Bestilling:</h1>
+            </section>
+            <section id="user-info-extras">
                 <div id="extras">
-                    <h2>Ekstraudstyr:</h2>
+                    <h2>Vælg ekstraudstyr</h2>
                     <div class="extra-punkt">
                         <input type="checkbox" name="airbag" id="airbag">
                         <label for="airbag">Airbag + DKK 200,-</label>
@@ -70,10 +72,36 @@
                     <div class="extra-punkt">
                         <input type="checkbox" name="muskel" id="muskel">
                         <label for="muskel">Muskelhund på bagsædet + DKK 50.000,-</label>
+                    </div>
+                </div>
+                <div id="user-info">
+                    <form id="user-form">
+                        <div class="user-form-container">
+                            <h2>Dine oplysninger</h2>
+                            <label for="navn">Navn:</label>
+                            <input name="navn" type="text" placeholder="John Nielsen" required>
+                            <label for="mail">E-mail:</label>
+                            <input type="email" name="mail" id="mail" placeholder="johnnielsen@mail.dk" required>
+                            <label for="telefon">Telefon:</label>
+                            <input name="telefon" type="tel" placeholder="12 34 56 78" required minlength="8" maxlength="8">
+                            <label for="adresse">Adresse:</label>
+                            <input name="adresse" type="text" placeholder="Skovvej 123" required>
+                            <div class="post-by">
+                                <div class="post">
+                                    <label for="postnummer">Postnummer:</label>
+                                    <input name="postnummer" type="" placeholder="8000" required maxlength="4" minlength="4">
+                                </div>
+                                <div class="by">
+                                    <label for="by">By:</label>
+                                    <input name="by" type="text" placeholder="Aarhus C" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="booknu" type="submit">Bestil bil</button>
+                    </form>
                 </div>
             </section>
         </div>
-        <button class="booknu" onclick="bestil();">Bestil</button>
     </div>
     <script type="text/javascript" src="js/cart.js"></script>
 </body>
