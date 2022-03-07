@@ -127,6 +127,7 @@ html, body{
     height: 50px;
     border: none;
     text-align: center;
+    
 }
 .submit{
     width: 80px;
@@ -162,6 +163,9 @@ select, input{
     color: white;
     font-family: var(--halcom);
 }
+select{
+    cursor: pointer;
+}
 #valuta{
     display: block;
     padding: 5px;
@@ -172,6 +176,7 @@ select, input{
 }
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+    cursor: pointer;
 }
 
 #biler{
