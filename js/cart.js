@@ -25,22 +25,17 @@ loadBiler();
 function fillCart() {
     const klon = skabelon.content.cloneNode(true);
     const billede = klon.querySelector(".billede");
-    const model = klon.querySelector(".model");
-    const brand = klon.querySelector(".brand");
-    const kategori = klon.querySelector(".bil-kategori");
-    const bilpersoner = klon.querySelector(".bil-personer");
-    const bilkufferter = klon.querySelector(".bil-kufferter");
 
     billede.src = biler[ordernum].billede;
-    model.textContent += biler[ordernum].model;
-    brand.textContent += biler[ordernum].brand;
-    kategori.textContent += biler[ordernum].kategori;
-    bilpersoner.textContent += biler[ordernum].personer;
-    bilkufferter.textContent += biler[ordernum].kufferter;
 
     vogn.appendChild(klon);
 
     const infoklon = infoskabelon.content.cloneNode(true);
+    const infobrand = infoklon.querySelector(".bestilling-brand");
+    const infomodel = infoklon.querySelector(".bestilling-model");
+    const infokategori = infoklon.querySelector(".bestilling-kategori");
+    const infopersoner = infoklon.querySelector(".bestilling-personer");
+    const infokufferter = infoklon.querySelector(".bestilling-kufferter");
     const infoafhent = infoklon.querySelector(".bestilling-afhent");
     const infoaflever = infoklon.querySelector(".bestilling-aflever");
     const infodage = infoklon.querySelector(".bestilling-dage");
@@ -50,18 +45,24 @@ function fillCart() {
     const infoexmoms = infoklon.querySelector(".bestilling-exmoms");
     const infopris = infoklon.querySelector(".bestilling-pris");
     
-    infoafhent.textContent += afhent;
-    infoaflever.textContent += aflever;
-    infodage.textContent += lejedage;
-    infogrundpris.textContent += biler[ordernum].pris + ",-";
-    infolejepris.textContent += 100 + ",-";
-    infotillaeg.textContent += biler[ordernum].tillaeg + ",-";
-    infoexmoms.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1) + ",-";
+    infobrand.innerHTML += biler[ordernum].brand;
+    infomodel.innerHTML += biler[ordernum].model;
+    infokategori.innerHTML += biler[ordernum].kategori;
+    infopersoner.innerHTML += biler[ordernum].personer;
+    infokufferter.innerHTML += biler[ordernum].kufferter;
+    infoafhent.innerHTML += afhent;
+    infoaflever.innerHTML += aflever;
+    infodage.innerHTML += lejedage;
+    infogrundpris.innerHTML += biler[ordernum].pris + ",-";
+    infolejepris.innerHTML += 100 + ",-";
+    infotillaeg.innerHTML += biler[ordernum].tillaeg + ",-";
+    infoexmoms.innerHTML += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1) + ",-";
     infopris.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25) + ",-";
 
     vogn.appendChild(infoklon);
 
     prisSum = beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25);
+    nyPris = prisSum;
 }
 
 
@@ -77,6 +78,107 @@ function beregnLejeudgift(bilPris, bilTillaeg, moms) {
 }
 
 
+const airbag = document.getElementById("airbag");
+const kidjail = document.getElementById("kidjail");
+const spoiler = document.getElementById("spoiler");
+const tires = document.getElementById("tires");
+const muskel = document.getElementById("muskel");
 
+let udstyrListe = []
+
+airbag.addEventListener("change", function(){
+    if (this.checked) {
+        udstyrListe.push("Airbag");
+        addExtra(200);
+    }
+    else {
+        let myIndex = udstyrListe.indexOf('Airbag');
+        if (myIndex !== -1) {
+            udstyrListe.splice(myIndex, 1);
+        }
+        removeExtra(200);
+    }
+})
+kidjail.addEventListener("change", function(){
+    if (this.checked) {
+        udstyrListe.push("Børnefængsel");
+        addExtra(3000);
+    }
+    else {
+        let myIndex = udstyrListe.indexOf('Børnefængsel');
+        if (myIndex !== -1) {
+            udstyrListe.splice(myIndex, 1);
+        }
+        removeExtra(3000);
+    }
+})
+spoiler.addEventListener("change", function(){
+    if (this.checked) {
+        udstyrListe.push("Fed spoiler");
+        addExtra(500);
+    }
+    else {
+        let myIndex = udstyrListe.indexOf('Fed spoiler');
+        if (myIndex !== -1) {
+            udstyrListe.splice(myIndex, 1);
+        }
+        removeExtra(500);
+    }
+})
+tires.addEventListener("change", function(){
+    if (this.checked) {
+        udstyrListe.push("Store dæk");
+        addExtra(999);
+    }
+    else {
+        let myIndex = udstyrListe.indexOf('Store dæk');
+        if (myIndex !== -1) {
+            udstyrListe.splice(myIndex, 1);
+        }
+        removeExtra(999);
+    }
+})
+muskel.addEventListener("change", function(){
+    if (this.checked) {
+        udstyrListe.push("Muskelhund på bagsædet");
+        addExtra(50000);
+    }
+    else {
+        let myIndex = udstyrListe.indexOf('Muskelhund på bagsædet');
+        if (myIndex !== -1) {
+            udstyrListe.splice(myIndex, 1);
+        }
+        removeExtra(50000);
+    }
+})
+
+
+let nyPris;
+
+
+function addExtra(extra) { 
+    const pris = document.querySelector(".bestilling-pris");
+    const udstyr = document.getElementById("udstyr");
+    udstyr.innerText = '';
+    nyPris += extra;
+    pris.innerHTML = `DKK ${nyPris},-`;
+    udstyrListe.forEach(item => {
+        udstyr.insertAdjacentHTML("beforeend", item + "<br><br>")
+    })
+}
+
+function removeExtra(extra) {
+    const pris = document.querySelector(".bestilling-pris");
+    nyPris -= extra;
+    udstyr.innerText = '';
+    pris.innerHTML = `DKK ${nyPris},-`;
+    udstyrListe.forEach(item => {
+        udstyr.insertAdjacentHTML("beforeend", item + "<br><br>")
+    })
+
+    if (udstyrListe.length == 0) {
+        udstyr.innerText = 'Ingen';
+    }
+}
 
 

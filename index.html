@@ -19,18 +19,18 @@
         <section class="hero-pic">
             <div class="formular-box">
                 <p class="overskrift">Find bilen som passer til dig</p>
-                <form class="formular" action="#" onsubmit="return false;" >
+                <form class="formular">
                     <div class="afhentning form-punkt">
                         <label for="afhentning"> Afhentning:</label>
-                        <input type="date" name="afhentning" id="afhentning">
+                        <input type="date" name="afhentning" id="afhentning" required>
                     </div>
                     <div class="aflevering form-punkt">
                         <label for="aflevering"> Aflevering:</label>
-                        <input type="date" name="aflevering" id="aflevering">
+                        <input type="date" name="aflevering" id="aflevering" required>
                     </div>
                     <div class="personer form-punkt">
                         <label for="personer">Antal personer:</label>
-                        <select name="personer" id="personer">
+                        <select name="personer" id="personer" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="kufferter form-punkt">
                         <label for="kufferter">Antal kufferter:</label>
-                        <select name="kufferter" id="kufferter">
+                        <select name="kufferter" id="kufferter" required>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -51,7 +51,7 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <button onclick="search();" class="submit" type="submit">Søg</button>
+                    <button class="submit" type="submit">Søg</button>
                 </form>
             </div>
         </section>

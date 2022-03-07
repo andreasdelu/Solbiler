@@ -3,7 +3,7 @@ const aflever = document.getElementById("aflevering");
 const personer = document.getElementById("personer");
 const kufferter = document.getElementById("kufferter");
 const convert = document.getElementById("valuta");
-
+const formular = document.querySelector(".formular");
 
 const skabelon = document.getElementById("skabelon");
 
@@ -20,6 +20,8 @@ if (month <= 9) {
 if (day <=9) {
     day = "0" + day;
 }
+
+
 
 
 afhent.value = `${year}-${month}-${day}`;
@@ -72,7 +74,10 @@ async function loadValuta() {
 
 convert.addEventListener("change", function(){search();});
 
-
+formular.addEventListener("submit", function(e){
+    e.preventDefault();
+    search();
+});
 
 function search() 
 {

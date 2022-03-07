@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solbiler ApS</title>
+    <title>Solbiler ApS | Vogn</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
 </head>
@@ -21,34 +21,58 @@
         <template id="skabelon">
             <div class="bil">
                 <img class="billede" src="" alt="Billede af udlejningsbil">
-                <div class="navn">
-                    <p class="brand"></p>
-                    <p class="model"></p>
-                </div>
-                <div class="info">
-                    <p class="bil-kategori">Kategori: </p>
-                    <p class="bil-personer">Personer: </p>
-                    <p class="bil-kufferter">Kufferter: </p>
-                </div>
             </div>
         </template>
         <template id="bestilling-info">
             <div class="bestilling-info">
-                <div class="bestilling-afhent bestilling">Afhentning: </div>
-                <div class="bestilling-aflever bestilling">Aflevering: </div>
-                <div class="bestilling-dage bestilling">Antal dage: </div>
-                <div class="bestilling-grundpris bestilling">Grundpris + forsikring: DKK </div>
-                <div class="bestilling-lejepris bestilling">Lejepris pr. dag: DKK </div>
-                <div class="bestilling-tillaeg bestilling">Klassetillæg: DKK </div>
-                <div class="bestilling-exmoms bestilling">Ex. Moms: DKK </div>
+                <h2>Info:</h2>
+                <div class="bestilling-brand bestilling"><span>Mærke:</span> </div>
+                <div class="bestilling-model bestilling"><span>Model:</span> </div>
+                <div class="bestilling-kategori bestilling"><span>Kategori:</span> </div>
+                <div class="bestilling-personer bestilling"><span>Antal personer:</span> </div>
+                <div class="bestilling-kufferter bestilling"><span>Antal kufferter:</span> </div>
+                <div class="bestilling-afhent bestilling"><span>Afhentning:</span> </div>
+                <div class="bestilling-aflever bestilling"><span>Aflevering:</span> </div>
+                <div class="bestilling-dage bestilling"><span>Antal dage:</span> </div>
+                <div class="bestilling-grundpris bestilling"><span>Grundpris + forsikring:</span> DKK </div>
+                <div class="bestilling-lejepris bestilling"><span>Lejepris pr. dag:</span> DKK </div>
+                <div class="bestilling-tillaeg bestilling"><span>Klassetillæg:</span> DKK </div>
+                <div class="bestilling-exmoms bestilling"><span>Ex. Moms:</span> DKK </div>
+                <h3>Ekstraudstyr:</h3>
+                <div id="udstyr">
+                    Ingen
+                </div>
                 <div class="bestilling-pris">DKK </div>
             </div>
         </template>
-        <section id="cart">
-            <a id="clear" href="javascript:clearCart()">Ryd bestilling</a>
-            <h1>Bestilling:</h1>
-
-        </section>
+        <a id="clear" href="javascript:clearCart()">Ryd bestilling</a>
+        <div id="order-wrap">
+            <section id="cart">
+                <h1>Bestilling:</h1>
+                <div id="extras">
+                    <h2>Ekstraudstyr:</h2>
+                    <div class="extra-punkt">
+                        <input type="checkbox" name="airbag" id="airbag">
+                        <label for="airbag">Airbag + DKK 200,-</label>
+                    </div>
+                    <div class="extra-punkt">
+                        <input type="checkbox" name="kidjail" id="kidjail">
+                        <label for="kidjail">Børnefængsel + DKK 3000,-</label>
+                    </div>
+                    <div class="extra-punkt">
+                        <input type="checkbox" name="spoiler" id="spoiler">
+                        <label for="spoiler">Fed spoiler + DKK 500,-</label>
+                    </div>
+                    <div class="extra-punkt">
+                        <input type="checkbox" name="tires" id="tires">
+                        <label for="tires">Store dæk + DKK 999,-</label>
+                    </div>
+                    <div class="extra-punkt">
+                        <input type="checkbox" name="muskel" id="muskel">
+                        <label for="muskel">Muskelhund på bagsædet + DKK 50.000,-</label>
+                </div>
+            </section>
+        </div>
         <button class="booknu" onclick="bestil();">Bestil</button>
     </div>
     <script type="text/javascript" src="js/cart.js"></script>

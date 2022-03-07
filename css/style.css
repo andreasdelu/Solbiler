@@ -278,24 +278,39 @@ h2{
     display: block;
 }
 
+#order-wrap{
+    display: flex;
+    width: var(--page-width);
+    max-width: 1100px;
+
+}
+
 #clear{
     display: block;
     margin-top: 20px;
 }
 #cart{
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px;
 }
-#cart h1{
+#order-wrap h1{
     margin: 10px 0;
     padding: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     box-sizing: border-box;
 }
+#cart h2{
+    margin: 20px 0;
+    text-align: left;
+}
 .bestilling{
     font-size: 1.2rem;
-    font-weight: 400;
-    margin: 20px 0;
+    font-weight: 300;
+    margin: 13px 0;
+}
+.bestilling span{
+    font-weight: 500;
 }
 .bestilling-pris{
     font-size: 1.5rem;
@@ -321,6 +336,28 @@ footer{
     font-size: 1.5rem;
     padding: 10px 20px;
     margin: 20px 0;
+}
+
+#extras{
+    border-top: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    background-color: var(--green);
+    border-radius: 20px;
+    color: white;
+    max-width: fit-content;
+    padding: 0px 10px 10px 10px;
+}
+#extras h2{
+    color: white;
+}
+.extra-punkt{
+    margin: 20px 0;
+}
+.extra-punkt input{
+    outline: none;
+}
+.extra-punkt label {
+    margin-left: 10px;
 }
 
 @media screen and (max-width: 735px){
