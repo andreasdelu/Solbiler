@@ -55,6 +55,9 @@ async function loadBiler() {
     search();
 }
 
+const output = document.getElementById("biler"); 
+output.insertAdjacentHTML("afterbegin", "<h2>Henter biler...</h2>")
+
 loadBiler();
 
 const api = "https://api.exchangerate-api.com/v4/latest/DKK";
