@@ -136,6 +136,7 @@ async function checkUser(){
     if (user.username == serverData.username && CryptoJS.AES.decrypt(user.password, "pass").toString() == CryptoJS.AES.decrypt(serverData.password, "pass").toString()) {
         let token = CryptoJS.AES.decrypt(CryptoJS.AES.encrypt(user.username + CryptoJS.AES.decrypt(user.password, "pass").toString(), "token"), "token");
         dataStorage.setItem("token", token)
+        dataStorage.setItem("isAuthenticated", true)
 
         window.location.href = "/profile/user.html";
     }

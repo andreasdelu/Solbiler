@@ -34,7 +34,7 @@ html, body{
     height: 100%;
 }
 
-.login{
+.login, .profil{
     display: flex;
     width: fit-content;
     height: fit-content;
@@ -53,15 +53,19 @@ html, body{
     margin-right: 10px;
     vertical-align: text-bottom;
 }
-.login p{
+.login p, .profil p{
     color: white;
     font-weight: bold;
     font-size: 0.85rem;
 }
-.login:hover{
+.login:hover, .profil:hover{
     transform: scale(1.06);
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
 }
+.profil{
+    display: none;
+}
+
 
 .wrapper{
     width: var(--page-width);

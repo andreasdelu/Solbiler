@@ -6,7 +6,7 @@ const convert = document.getElementById("valuta");
 const formular = document.querySelector(".formular");
 
 const skabelon = document.getElementById("skabelon");
-
+let dataStorage = window.sessionStorage;
 const today = new Date();
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
@@ -21,7 +21,13 @@ if (day <=9) {
     day = "0" + day;
 }
 
+if (dataStorage.getItem("isAuthenticated")){
+    const login = document.querySelector(".login");
+    const profil = document.querySelector(".profil");
 
+    login.remove();
+    profil.style.display = "flex";
+}
 
 
 afhent.value = `${year}-${month}-${day}`;
@@ -46,7 +52,7 @@ aflever.addEventListener("change", function()
     }
 });
 
-let dataStorage = window.sessionStorage;
+
 
 let biler;
 
