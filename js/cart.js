@@ -88,7 +88,11 @@ function fillCart() {
 
 
 function clearCart() {
-    dataStorage.clear();
+    dataStorage.removeItem("lejedage");
+    dataStorage.removeItem("aflever");
+    dataStorage.removeItem("ordernum");
+    dataStorage.removeItem("valgtUdstyr");
+    dataStorage.removeItem("afhent");
     vogn.innerHTML = '';
     window.location.href = "index.html";
     
