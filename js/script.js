@@ -46,19 +46,19 @@ aflever.addEventListener("change", function()
     }
 });
 
-dataStorage = window.sessionStorage;
+let dataStorage = window.sessionStorage;
 
 let biler;
 
 async function loadBiler() {
+    const output = document.getElementById("biler"); 
+    output.insertAdjacentHTML("afterbegin", "<h2>Henter biler...</h2>")
     const response = await fetch('./biler.json');
     biler = await response.json();
     await loadValuta();
     search();
 }
 
-const output = document.getElementById("biler"); 
-output.insertAdjacentHTML("afterbegin", "<h2>Henter biler...</h2>")
 
 loadBiler();
 
@@ -74,7 +74,7 @@ async function loadValuta() {
 
 convert.addEventListener("change", function(){search();});
 
-formular.addEventListener("submit", function(e){
+formular.addEventListener("submit", (e) => {
     e.preventDefault();
     search();
 });

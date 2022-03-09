@@ -1,6 +1,19 @@
+
 const skabelon = document.getElementById("skabelon");
 
-dataStorage = window.sessionStorage;
+let dataStorage = window.sessionStorage;
+
+if (dataStorage.getItem("ordernum") == null) {
+    noOrderErr();
+    throw new Error("No order number found.");
+}
+
+function noOrderErr() {
+    const clear = document.getElementById("clear");
+    clear.innerHTML = 'Til forsiden';
+    clear.href = "index.html";
+    document.getElementById("order-wrap").innerHTML = '<h1 style="margin: 0 auto;">Din indkøbsvogn er tom :(</h1>'
+}
 
 const vogn = document.getElementById("cart");
 const infoskabelon = document.getElementById("bestilling-info");
@@ -81,13 +94,6 @@ function beregnLejeudgift(bilPris, bilTillaeg, moms) {
 
 /* Tilføj, fjern og gem ekstraudstyr */
 
-
-const airbag = document.getElementById("airbag");
-const kidjail = document.getElementById("kidjail");
-const spoiler = document.getElementById("spoiler");
-const tires = document.getElementById("tires");
-const muskel = document.getElementById("muskel");
-
 let udstyrListe = []
 let nyPris;
 
@@ -108,75 +114,23 @@ window.addEventListener("load", () => {
     }
 })
 
+const checkbokse = document.querySelectorAll(".extra-udstyr");
 
-
-airbag.addEventListener("change", function(){
-    const obj = {
-        name: "airbag",
-        pris: 200, 
-        txt: "Airbag + DKK 200,-"
-    }
-    if (this.checked) {
-        addExtra(obj);
-    }
-    else {
-        removeExtra(obj);
-    }
-})
-kidjail.addEventListener("change", function(){
-    const obj = {
-        name: "kidjail",
-        pris: 3000, 
-        txt: "Børnefængsel + DKK 3000,-"
-    }
-    if (this.checked) {
-        addExtra(obj);
-    }
-    else {
-        removeExtra(obj);
-    }
-})
-spoiler.addEventListener("change", function(){
-    const obj = {
-        name: "spoiler",
-        pris: 500, 
-        txt: "Fed spoiler + DKK 500,-"
-    }
-    if (this.checked) {
-        addExtra(obj);
-    }
-    else {
-        removeExtra(obj);
-    }
-})
-tires.addEventListener("change", function(){
-    const obj = {
-        name: "tires",
-        pris: 999, 
-        txt: "Store dæk + DKK 999,-"
-    }
-    if (this.checked) {
-        addExtra(obj);
-    }
-    else {
-        removeExtra(obj);
-    }
-})
-muskel.addEventListener("change", function(){
-    const obj = {
-        name: "muskel",
-        pris: 50000, 
-        txt: "Muskelhund på bagsædet + DKK 50.000,-"
-    }
-    if (this.checked) {
-        addExtra(obj);
-    }
-    else {
-        removeExtra(obj);
-    }
-})
-
-
+for (const checkboks of checkbokse) {
+    checkboks.addEventListener("change", function(){
+        const obj = {
+            name: checkboks.id,
+            pris: parseInt(checkboks.value), 
+            txt: checkboks.name
+        }
+        if (this.checked) {
+            addExtra(obj);
+        }
+        else {
+            removeExtra(obj);
+        }
+    })
+}
 
 
 function addExtra(extra) { 
@@ -194,6 +148,7 @@ function addExtra(extra) {
 
 function removeExtra(extra) {
     const pris = document.querySelector(".bestilling-pris");
+    const udstyr = document.getElementById("udstyr");
     udstyrListe = udstyrListe.filter( item => item.name !== extra.name);
     nyPris -= extra.pris;
     udstyr.innerText = '';
@@ -229,13 +184,13 @@ function bestil() {
     }
     let valgtUdstyr = [];
     udstyrListe.forEach(item => {
-        valgtUdstyr.push(item.name);
+        valgtUdstyr.push(item.txt);
     })
     let orderInfo = {
         kunde,
         bil: ordernum,
         valgtUdstyr,
-        pris: nyPris
+        total: nyPris
     };
     orderForm.insertAdjacentText("afterend", JSON.stringify(orderInfo));
 }

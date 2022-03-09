@@ -13,7 +13,7 @@
         <header>
             <div class="logo-login">
                 <a class="logo" href="index.html"><img src="images/logo.png" alt="Solbiler ApS Logo"></a>
-                <a class="login" href="#"><img src="images/login2.png" alt="login"><p>Log-ind</p></a>
+                <a class="login"><img src="images/login2.png" alt="login"><p>Log-ind</p></a>
             </div>
         </header>
         <section class="hero-pic" style="height: 180px;"></section>
@@ -54,23 +54,23 @@
                 <div id="extras">
                     <h2>Vælg ekstraudstyr</h2>
                     <div class="extra-punkt">
-                        <input type="checkbox" name="airbag" id="airbag">
+                        <input type="checkbox" name="Airbag + DKK 200,-" id="airbag" class="extra-udstyr" value="200">
                         <label for="airbag">Airbag + DKK 200,-</label>
                     </div>
                     <div class="extra-punkt">
-                        <input type="checkbox" name="kidjail" id="kidjail">
+                        <input type="checkbox" name="Børnefængsel + DKK 3000,-" id="kidjail" class="extra-udstyr" value="3000">
                         <label for="kidjail">Børnefængsel + DKK 3000,-</label>
                     </div>
                     <div class="extra-punkt">
-                        <input type="checkbox" name="spoiler" id="spoiler">
+                        <input type="checkbox" name="Fed spoiler + DKK 500,-" id="spoiler" class="extra-udstyr" value="500">
                         <label for="spoiler">Fed spoiler + DKK 500,-</label>
                     </div>
                     <div class="extra-punkt">
-                        <input type="checkbox" name="tires" id="tires">
+                        <input type="checkbox" name="Store dæk + DKK 999,-" id="tires" class="extra-udstyr" value="999">
                         <label for="tires">Store dæk + DKK 999,-</label>
                     </div>
                     <div class="extra-punkt">
-                        <input type="checkbox" name="muskel" id="muskel">
+                        <input type="checkbox" name="Muskelhund på bagsædet + DKK 50.000,-" id="muskel" class="extra-udstyr" value="50000">
                         <label for="muskel">Muskelhund på bagsædet + DKK 50.000,-</label>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <label for="mail">E-mail:</label>
                             <input type="email" name="mail" id="mail" placeholder="johnnielsen@mail.dk" required>
                             <label for="telefon">Telefon:</label>
-                            <input name="telefon" type="tel" placeholder="12 34 56 78" required minlength="8" maxlength="8">
+                            <input name="telefon" type="tel" placeholder="12 34 56 78" required pattern="[0-9]{8}" minlength="8" maxlength="8">
                             <label for="adresse">Adresse:</label>
                             <input name="adresse" type="text" placeholder="Skovvej 123" required>
                             <div class="post-by">
@@ -102,7 +102,12 @@
                 </div>
             </section>
         </div>
+        <footer>
+            Copyright: Solbiler ApS 1987-2022
+        </footer>
     </div>
     <script type="text/javascript" src="js/cart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
