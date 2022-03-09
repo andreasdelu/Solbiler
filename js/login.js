@@ -138,7 +138,7 @@ async function checkUser(){
         dataStorage.setItem("token", token)
         dataStorage.setItem("isAuthenticated", true)
 
-        window.location.href = "/profile/user.html";
+        window.location.href = "profile/user.html";
     }
     else {
         modal.classList.add("wrong")

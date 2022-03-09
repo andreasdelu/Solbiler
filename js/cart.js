@@ -3,6 +3,14 @@ const skabelon = document.getElementById("skabelon");
 
 let dataStorage = window.sessionStorage;
 
+if (dataStorage.getItem("isAuthenticated")){
+    const login = document.querySelector(".login");
+    const profil = document.querySelector(".profil");
+
+    login.remove();
+    profil.style.display = "flex";
+}
+
 if (dataStorage.getItem("ordernum") == null) {
     noOrderErr();
     throw new Error("No order number found.");
