@@ -17,6 +17,8 @@ if (dataStorage.getItem("ordernum") == null) {
 }
 
 function noOrderErr() {
+    const print = document.getElementById("print");
+    print.remove();
     const clear = document.getElementById("clear");
     clear.innerHTML = 'Til forsiden';
     clear.href = "index.html";
@@ -179,10 +181,109 @@ function removeExtra(extra) {
 
 const orderForm = document.getElementById("user-form")
 
+let formError = false;
+
+
 orderForm.addEventListener("submit", function(e){
     e.preventDefault();
     bestil();
 })
+
+// Check postnummer, adresse og by
+
+const postnummer = document.getElementById("postnummer");
+const by = document.getElementById("by");
+const adresse = document.getElementById("adresse");
+const postDataList = document.getElementById("postnummer-list")
+const vejDataList = document.getElementById("adresse-list")
+let oldValue;
+let postnumre = [];
+let vejnavne = [];
+
+async function hentPostnumre(vej, post) {
+    const response = await fetch("https://api.dataforsyningen.dk/postnumre/");
+    postnumre = await response.json();
+}
+hentPostnumre();
+
+postnummer.addEventListener("input", () => {
+    if (postnummer.value.length >= 1) {
+        if (postnummer.value.length == 4) {
+            oldValue = parseInt(postnummer.value)
+        }
+        if (postnummer.value.length > 4) {
+            postnummer.value = oldValue;
+        }
+        checkPostnumre(postnummer.value);
+        
+    }
+    else{
+        postDataList.innerHTML ='';
+        by.value = '';
+    }
+
+
+})
+
+function checkPostnumre(postnum) {
+    postDataList.innerHTML ='';
+    postnumre.forEach(post => {
+        if (post.nr.startsWith(postnum)) {
+            let nummer = document.createElement("option");
+            nummer.value = post.nr;
+            nummer.innerText = post.nr + " " + post.navn;
+            postDataList.appendChild(nummer);
+    
+            postnummer.classList.remove("wrong");
+            postnummer.setCustomValidity("");
+        }
+        if (post.nr == postnum){
+            by.value = post.navn
+            adresse.readOnly = false;
+        }
+    })
+    if (postnummer.value.length == 4) {
+        
+        hentVejnavne(postnummer.value);
+    }
+    else {
+        by.value = '';
+        adresse.readOnly = true;
+        adresse.value = ''
+    }
+}
+
+adresse.addEventListener("input", () => {
+    if (postnummer.value.length === 4) {
+        let vejnavn = adresse.value.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase()
+        checkVejnavne(vejnavn);
+    }
+
+})
+
+async function hentVejnavne(post) {
+    const response = await fetch(`https://api.dataforsyningen.dk/adgangsadresser?q=${post}`);
+    vejnavne = await response.json();
+}
+
+function checkVejnavne(navn){
+    vejDataList.innerHTML ='';
+    vejnavne.forEach(vej => {
+        let vejnavn = (vej.vejstykke.navn + " " + vej.husnr);
+        if (vejnavn.toLowerCase().startsWith(navn)) {
+            let vejPunkt = document.createElement("option");
+            vejPunkt.value = vejnavn;
+            vejPunkt.innerText = vejnavn;
+            vejDataList.appendChild(vejPunkt);
+        }
+
+    })
+}
+
+
+
+
+// Saml al brugerdata
 
 function bestil() {
     let formData = new FormData(orderForm);

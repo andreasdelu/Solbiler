@@ -46,7 +46,10 @@
                 <div class="bestilling-pris">DKK </div>
             </div>
         </template>
-        <a id="clear" href="javascript:clearCart()">Ryd bestilling</a>
+        <div id="links">
+            <a id="clear" href="javascript:clearCart()">Ryd bestilling</a>
+            <a id="print" href="javascript:window.print()">Udskriv</a>
+        </div>
         <div id="order-wrap">
             <section id="cart">
                 <h1>Bestilling:</h1>
@@ -80,33 +83,37 @@
                         <div class="user-form-container">
                             <h2>Dine oplysninger</h2>
                             <label for="navn">Navn:</label>
-                            <input name="navn" type="text" placeholder="John Nielsen" required>
+                            <input name="navn" type="text" placeholder="John Nielsen" required autocomplete="given-name">
                             <label for="mail">E-mail:</label>
-                            <input type="email" name="mail" id="mail" placeholder="johnnielsen@mail.dk" required>
+                            <input type="email" name="mail" id="mail" placeholder="johnnielsen@mail.dk" required autocomplete="email">
                             <label for="telefon">Telefon:</label>
-                            <input name="telefon" type="tel" placeholder="12 34 56 78" required pattern="[0-9]{8}" minlength="8" maxlength="8">
-                            <label for="adresse">Adresse:</label>
-                            <input name="adresse" type="text" placeholder="Skovvej 123" required>
+                            <input name="telefon" type="tel" placeholder="12 34 56 78" required pattern="[0-9]{8}" minlength="8" maxlength="8" autocomplete="tel">
                             <div class="post-by">
                                 <div class="post">
                                     <label for="postnummer">Postnummer:</label>
-                                    <input name="postnummer" type="" placeholder="8000" required maxlength="4" minlength="4">
+                                    <input list="postnummer-list" id="postnummer" name="postnummer" type="number" placeholder="8000" required min="1" max="9999">
+                                    <datalist id="postnummer-list"></datalist>
                                 </div>
                                 <div class="by">
                                     <label for="by">By:</label>
-                                    <input name="by" type="text" placeholder="Aarhus C" required>
+                                    <input id="by" name="by" type="text" placeholder="Aarhus C" required readonly>
                                 </div>
                             </div>
+                            <label for="adresse">Adresse:</label>
+                            <input id="adresse" list="adresse-list" name="adresse" type="text" placeholder="Skovvej 123, 2. th." required readonly autocomplete="street-address">
+                            <datalist id="adresse-list"></datalist>
                         </div>
+                        
                         <button class="booknu" type="submit">Bestil bil</button>
                     </form>
+                    
                 </div>
             </section>
         </div>
-        <footer>
-            Copyright: Solbiler ApS 1987-2022
-        </footer>
     </div>
+    <footer>
+        Copyright: Solbiler ApS 1987-2022
+    </footer>
     <script type="text/javascript" src="js/cart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/login.js"></script>

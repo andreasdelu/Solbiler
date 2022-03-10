@@ -57,12 +57,20 @@ aflever.addEventListener("change", function()
 let biler;
 
 async function loadBiler() {
-    const output = document.getElementById("biler"); 
-    output.insertAdjacentHTML("afterbegin", "<h2>Henter biler...</h2>")
-    const response = await fetch('./biler.json');
-    biler = await response.json();
-    await loadValuta();
-    search();
+    const output = document.getElementById("biler");
+
+    try {
+        output.insertAdjacentHTML("afterbegin", "<h2>Henter biler...</h2>")
+        const response = await fetch('./biler.json');
+        biler = await response.json();
+        await loadValuta();
+        search();
+    } catch (err) {
+        console.log(err.message);
+        output.innerHTML = '';
+        output.insertAdjacentHTML("afterbegin", "<h2>Kunne ikke hente biler... prøv igen.</h2>")
+    }
+    
 }
 
 
@@ -132,7 +140,7 @@ function bookNu(order)
     let lejedage = beregnAntalLejedage();
 
     if (order != dataStorage.getItem("ordernum")) {
-        dataStorage.clear();
+        dataStorage.removeItem("valgtUdstyr");
     }
     dataStorage.setItem("ordernum", order);
     dataStorage.setItem("lejedage", lejedage);

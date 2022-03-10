@@ -1,10 +1,11 @@
 
 const loginKnap = document.querySelector(".login");
 const wrapper = document.querySelector(".wrapper")
-
-loginKnap.addEventListener("click", () => {
-    createModal();
-})
+if (!dataStorage.getItem("isAuthenticated")) {
+    loginKnap.addEventListener("click", () => {
+        createModal();
+    })
+}
 
 function createModal() {
 
@@ -53,6 +54,7 @@ function createModal() {
     inputUser.type = "text";
     inputUser.id = "username";
     inputUser.required = true;
+    inputUser.autocomplete = "username";
     loginForm.appendChild(inputUser);
 
     const passLabel = document.createElement("label")
@@ -65,6 +67,7 @@ function createModal() {
     inputPass.type = "password";
     inputPass.id = "password";
     inputPass.required = true;
+    inputPass.autocomplete = "current-password";
     loginForm.appendChild(inputPass);
 
     const glemt = document.createElement("a");
