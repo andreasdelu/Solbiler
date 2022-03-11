@@ -1,6 +1,6 @@
 [
     {
-        "billede": "images/biler/swift.png",
+        "billede": "images/biler/swift.webp",
         "brand": "Suzuki",
         "model": "Swift",
         "kategori": "Budget",
@@ -11,7 +11,7 @@
         "nummer": 0
     },
     {
-        "billede": "images/biler/mazda3.png",
+        "billede": "images/biler/mazda3.webp",
         "brand": "Mazda",
         "model": "3",
         "kategori": "Mellemklasse",
@@ -22,7 +22,7 @@
         "nummer": 1
     },
     {
-        "billede": "images/biler/touran.png",
+        "billede": "images/biler/touran.webp",
         "brand": "Volkswagen",
         "model": "Touran",
         "kategori": "Minivan",

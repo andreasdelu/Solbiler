@@ -112,7 +112,7 @@ function search()
             const pris = klon.querySelector(".pris");
             
             const bookbtn = klon.querySelector(".booknu");
-            bookbtn.onclick = function(){bookNu(bil.nummer);};
+            bookbtn.onclick = function(){bookNu(JSON.stringify(bil));};
 
             billede.src = bil.billede;
             model.textContent += bil.model;
@@ -139,10 +139,10 @@ function bookNu(order)
 {
     let lejedage = beregnAntalLejedage();
 
-    if (order != dataStorage.getItem("ordernum")) {
+    if (order != dataStorage.getItem("bil")) {
         dataStorage.removeItem("valgtUdstyr");
     }
-    dataStorage.setItem("ordernum", order);
+    dataStorage.setItem("bil", order);
     dataStorage.setItem("lejedage", lejedage);
     fixDate("afhent");
     fixDate("aflever");
@@ -160,7 +160,7 @@ function fixDate(dato) {
     }
 }
 
-if (dataStorage.getItem("ordernum") != null) {
+if (dataStorage.getItem("bil") != null) {
     const cart = document.querySelector(".shopping-cart");
     cart.classList.add("isShown");
 }

@@ -11,9 +11,9 @@ if (dataStorage.getItem("isAuthenticated")){
     profil.style.display = "flex";
 }
 
-if (dataStorage.getItem("ordernum") == null) {
+if (dataStorage.getItem("bil") == null) {
     noOrderErr();
-    throw new Error("No order number found.");
+    throw new Error("No order found.");
 }
 
 function noOrderErr() {
@@ -33,23 +33,16 @@ const lejedage = dataStorage.getItem("lejedage");
 const afhent = dataStorage.getItem("afhent");
 const aflever = dataStorage.getItem("aflever");
 
-const ordernum = dataStorage.getItem("ordernum");
+const bil = JSON.parse(dataStorage.getItem("bil"));
 
-let biler;
 
-async function loadBiler() {
-    const response = await fetch('./biler.json');
-    biler = await response.json();
-    fillCart();
-}
-
-loadBiler();
+fillCart();
 
 function fillCart() {
     const klon = skabelon.content.cloneNode(true);
     const billede = klon.querySelector(".billede");
 
-    billede.src = biler[ordernum].billede;
+    billede.src = bil.billede;
 
     vogn.appendChild(klon);
 
@@ -68,23 +61,23 @@ function fillCart() {
     const infoexmoms = infoklon.querySelector(".bestilling-exmoms");
     const infopris = infoklon.querySelector(".bestilling-pris");
     
-    infobrand.innerHTML += biler[ordernum].brand;
-    infomodel.innerHTML += biler[ordernum].model;
-    infokategori.innerHTML += biler[ordernum].kategori;
-    infopersoner.innerHTML += biler[ordernum].personer;
-    infokufferter.innerHTML += biler[ordernum].kufferter;
+    infobrand.innerHTML += bil.brand;
+    infomodel.innerHTML += bil.model;
+    infokategori.innerHTML += bil.kategori;
+    infopersoner.innerHTML += bil.personer;
+    infokufferter.innerHTML += bil.kufferter;
     infoafhent.innerHTML += afhent;
     infoaflever.innerHTML += aflever;
     infodage.innerHTML += lejedage;
-    infogrundpris.innerHTML += biler[ordernum].pris + ",-";
+    infogrundpris.innerHTML += bil.pris + ",-";
     infolejepris.innerHTML += 100 + ",-";
-    infotillaeg.innerHTML += biler[ordernum].tillaeg + ",-";
-    infoexmoms.innerHTML += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1) + ",-";
-    infopris.textContent += beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25) + ",-";
+    infotillaeg.innerHTML += bil.tillaeg + ",-";
+    infoexmoms.innerHTML += beregnLejeudgift(bil.pris, bil.tillaeg, 1) + ",-";
+    infopris.textContent += beregnLejeudgift(bil.pris, bil.tillaeg, 1.25) + ",-";
 
     vogn.appendChild(infoklon);
 
-    prisSum = beregnLejeudgift(biler[ordernum].pris, biler[ordernum].tillaeg, 1.25);
+    prisSum = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
     nyPris = prisSum;
 }
 
@@ -92,7 +85,7 @@ function fillCart() {
 function clearCart() {
     dataStorage.removeItem("lejedage");
     dataStorage.removeItem("aflever");
-    dataStorage.removeItem("ordernum");
+    dataStorage.removeItem("bil");
     dataStorage.removeItem("valgtUdstyr");
     dataStorage.removeItem("afhent");
     vogn.innerHTML = '';
@@ -181,9 +174,6 @@ function removeExtra(extra) {
 
 const orderForm = document.getElementById("user-form")
 
-let formError = false;
-
-
 orderForm.addEventListener("submit", function(e){
     e.preventDefault();
     bestil();
@@ -200,7 +190,7 @@ let oldValue;
 let postnumre = [];
 let vejnavne = [];
 
-async function hentPostnumre(vej, post) {
+async function hentPostnumre() {
     const response = await fetch("https://api.dataforsyningen.dk/postnumre/");
     postnumre = await response.json();
 }
@@ -301,7 +291,7 @@ function bestil() {
     })
     let orderInfo = {
         kunde,
-        bil: ordernum,
+        bil: bil,
         valgtUdstyr,
         total: nyPris
     };
