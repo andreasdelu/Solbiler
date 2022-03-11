@@ -34,7 +34,7 @@ html, body{
     height: 100%;
 }
 
-.login, .profil{
+.login, .profil, .om-os{
     display: flex;
     width: fit-content;
     height: fit-content;
@@ -53,17 +53,20 @@ html, body{
     margin-right: 10px;
     vertical-align: text-bottom;
 }
-.login p, .profil p{
+.login p, .profil p, .om-os p{
     color: white;
     font-weight: bold;
     font-size: 0.85rem;
 }
-.login:hover, .profil:hover{
+.login:hover, .profil:hover, .om-os:hover{
     transform: scale(1.06);
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
 }
 .profil{
     display: none;
+}
+.om-os{
+    margin: 0 20px 0 auto;
 }
 
 

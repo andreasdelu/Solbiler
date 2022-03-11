@@ -122,7 +122,7 @@ function search()
             bilkufferter.textContent += bil.kufferter;
 
             const udregnetPris = beregnLejeudgift(bil.pris, bil.tillaeg, 1.25);
-            pris.textContent += convert.value + " " + Math.round(udregnetPris * valuta[convert.value]);
+            pris.textContent += convert.value + " " + Math.round(udregnetPris * valuta[convert.value]) + ",-";
             output.appendChild(klon);
 
             

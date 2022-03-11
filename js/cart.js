@@ -35,6 +35,7 @@ const aflever = dataStorage.getItem("aflever");
 
 const bil = JSON.parse(dataStorage.getItem("bil"));
 
+let nyPris;
 
 fillCart();
 
@@ -102,7 +103,7 @@ function beregnLejeudgift(bilPris, bilTillaeg, moms) {
 /* Tilføj, fjern og gem ekstraudstyr */
 
 let udstyrListe = []
-let nyPris;
+
 
 window.addEventListener("load", () => {
     const udstyr = document.getElementById("udstyr");
