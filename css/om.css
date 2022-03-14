@@ -1,0 +1,188 @@
+@import url("https://use.typekit.net/zga3luw.css");
+
+:root{
+    --page-width: 80vw;
+
+    --green: #2fac66;
+
+    --halcom: "halcom", sans-serif;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    min-height: 100vh;
+    font-family: var(--halcom);
+    background-color: white;
+}
+footer{
+    color: var(--green);
+    text-align: center;
+    padding: 5px 0;
+}
+
+.logo-login{
+    display: flex;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo{
+    display: block;
+    height: 70px;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.login, .profil, .om-os{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--green);
+    padding: 0 20px;
+    border-radius: 2000px;
+    transition: 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+.login img{
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: text-bottom;
+}
+.login p, .profil p, .om-os p{
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.login:hover, .profil:hover{
+    transform: scale(1.06);
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
+}
+.profil{
+    display: none;
+}
+.om-os{
+    margin: 0 20px 0 auto;
+    background-color: transparent;
+    outline: 2px solid var(--green);
+}
+.om-os p{
+    color: var(--green);
+}
+.wrapper{
+    width: 100%;
+    max-width: 1100px;
+    min-height: 200vh;
+    margin: 0 auto;
+}
+
+#billeder{
+    height: fit-content;
+}
+
+#business{
+    width: 100%;
+    height: calc(100vh - 90px);
+    min-height: 300px;
+    background-image: url("../images/omos/omos1.jpeg");
+    background-size: 180%;
+    background-position-x: 45%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#logo{
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.5));
+}
+
+#hvem-er-vi, #vores-mission{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+h2{
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px solid var(--green);
+    padding: 10px 0;
+    font-weight: 900;
+
+}
+
+.person{
+    width: 100%;
+    margin: 30px auto;
+    visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.person:nth-child(3){
+    flex-wrap: wrap-reverse;
+}
+
+.profil-billede{
+    height: 300px;
+    margin-bottom: 10px;
+    
+}
+.profil-tekst{
+    padding: 0 10px;
+    font-size: 1.1rem;
+    max-width: 35ch;
+    box-sizing: border-box;
+}
+.profil-tekst > h4{
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.shown{
+    visibility: visible;
+    animation: animIn 1s ease-in-out forwards;
+}
+
+#vores-mission{
+    background-color: var(--green);
+    width: 100%;
+}
+
+#vores-mission h2{
+    color: white;
+}
+#background{
+    width: 100%;
+    height: 180vh;
+    background-image: url("../images/omos/parallax/parallax_0000_parallax.png");
+    background-repeat: no-repeat;
+    background-position-y: 200%;
+    background-size: 120%;
+}
+
+
+@keyframes animIn {
+    from{transform: translateX(-100%); opacity: 0;}
+    90%{transform: translateX(1%);}
+    to{transform: translateX(0%); opacity: 1;}
+}
+

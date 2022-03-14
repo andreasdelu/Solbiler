@@ -1,4 +1,4 @@
-
+const dataStorage = window.sessionStorage;
 const loginKnap = document.querySelector(".login");
 const wrapper = document.querySelector(".wrapper")
 if (!dataStorage.getItem("isAuthenticated")) {
