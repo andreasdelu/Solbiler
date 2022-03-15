@@ -17,25 +17,31 @@ const car = document.getElementById("car");
 mountainBack.style.backgroundPositionY = window.scrollY/12 + "px";
 mountainFront.style.backgroundPositionY = "-" +  window.scrollY/20 + "%";
 
+const lilleBil = document.getElementById("lille-bil");
+lilleBil.style.width = (document.documentElement.scrollTop/((document.documentElement.offsetHeight-window.innerHeight)/window.innerWidth)) + "px";
+
 
 window.addEventListener("scroll", (e) => {
     business.style.backgroundPositionY = "-" + window.scrollY/4 + "px";
 
     mountainBack.style.backgroundPositionY = window.scrollY/12 + "px";
     mountainFront.style.backgroundPositionY = "-" + window.scrollY/20 + "%";
-})
 
+    lilleBil.style.width = (document.documentElement.scrollTop/((document.documentElement.offsetHeight-window.innerHeight)/window.innerWidth)) + "px";
+
+
+
+
+
+})
 const personer = document.querySelectorAll(".person");
 
 let observer = new IntersectionObserver((entries) => {
-    if(entries[0]['intersectionRatio'] == 0) {
-        /* entries[0].target.classList.remove("shown") */
-    }
-    else {
+    if(entries[0]['intersectionRatio'] > 0) {
         entries[0].target.classList.add("shown")
         observer.unobserve(entries[0].target)
     }
-}, { root: null, rootMargin: "0px 0px -70px 0px" });
+}, {rootMargin: "0px 0px -70px 0px" });
 
 personer.forEach(person => {
     observer.observe(person);
@@ -43,11 +49,9 @@ personer.forEach(person => {
 
 const quote = document.getElementById("quote");
 
-let observer2 = new IntersectionObserver((entries) => {
-    if(entries[0]['intersectionRatio'] == 0) {
 
-    }
-    else {
+let observer2 = new IntersectionObserver((entries) => {
+    if(entries[0]['intersectionRatio'] > 0) {
         entries[0].target.classList.add("show-quote")
         observer.unobserve(entries[0].target)
     }

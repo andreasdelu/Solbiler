@@ -1,7 +1,7 @@
 @import url("https://use.typekit.net/zga3luw.css");
 
 :root{
-    --page-width: 80vw;
+    --page-width: 100vw;
 
     --green: #2fac66;
 
@@ -22,7 +22,7 @@ html, body{
     margin: 10px auto;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 95%;
 }
 
 .logo{
@@ -179,9 +179,7 @@ select{
 #valuta{
     display: block;
     padding: 5px;
-    margin: 0;
-    margin-top: 25px;
-    margin-left: auto;
+    margin: 25px 25px 0 auto;
     
 }
 ::-webkit-calendar-picker-indicator {
@@ -191,7 +189,8 @@ select{
 
 #biler{
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
+    width: 90vw;
     max-width: 900px;
 }
 
@@ -369,11 +368,6 @@ h2{
 }
 .bestilling-info{
     margin-bottom: 10px;
-}
-footer{
-    color: var(--green);
-    text-align: center;
-    padding: 5px 0;
 }
 
 .order{
@@ -599,6 +593,37 @@ footer{
     transition: 0.2s;
     animation: shake 0.2s 0.2s ease;
 }
+
+footer{
+    background-color: var(--green);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 50px 0 50px;
+}
+
+footer h5{
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#footer-kontakt{
+    text-align: left;
+}
+
+#footer-adresse{
+    text-align: right;
+}
+
+
 @keyframes shake {
     from{transform: translateX(0);}
     33%{transform: translateX(15px);}
@@ -727,20 +752,33 @@ footer{
 }
 
 @media print {
-    #user-info-extras, .profil, .login, #clear, .hero-pic, .booknu, footer, #print{
-        display: none;
+    body, html{
+        margin: 0;
+        padding: 0;
+        min-height: none;
+        height: 90vh !important;
+        overflow: hidden;
+    }
+    #order-wrap{
+        margin: 0 !important;
+        padding: 0;
+        min-height: none;
+        display: block;
     }
     #cart{
-        max-width: 50vw;
+        width: 50vw;
         margin-top: 10px;
     }
     .logo{
-        height: 100px;
+        height: 80px;
         margin: 0px auto;
         margin-top: 10px;
         
     }
-    body{
-        min-height: none;
+    .bestilling{
+        font-size: 1.1rem;
+    }
+    #user-info-extras, .profil, .profil p, .login, #clear, .hero-pic, .booknu, footer, #print{
+        display: none;
     }
 }
