@@ -309,7 +309,28 @@ h2{
     margin: 0 10px;
     margin-top: 20px;
     text-align: center;
+    background-color: var(--green);
+    padding: 10px 10px;
+    color: white;
+    border-radius: 20000px;
+    text-decoration: none;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
 }
+#clear img, #print img{
+    height: 1rem;
+    margin-right: 10px;
+}
+
+#clear{
+    background-color: red;
+}
+
+#clear:hover, #print:hover{
+    transform: scale(1.05);
+}
+
 #cart{
     margin: 0 auto;
     width: 100%;
@@ -706,11 +727,18 @@ footer{
 }
 
 @media print {
-    #user-info-extras, header, #clear, .hero-pic, .booknu, footer{
+    #user-info-extras, .profil, .login, #clear, .hero-pic, .booknu, footer, #print{
         display: none;
     }
-    #order-wrap{
-        margin-top: 20px;
+    #cart{
+        max-width: 50vw;
+        margin-top: 10px;
+    }
+    .logo{
+        height: 100px;
+        margin: 0px auto;
+        margin-top: 10px;
+        
     }
     body{
         min-height: none;

@@ -124,7 +124,10 @@ h2{
     border-bottom: 3px solid var(--green);
     padding: 10px 0;
     font-weight: 900;
+}
 
+h3{
+    font-weight: 900;
 }
 
 .person{
@@ -170,19 +173,118 @@ h2{
 #vores-mission h2{
     color: white;
 }
-#background{
+#parallax{
     width: 100%;
-    height: 180vh;
-    background-image: url("../images/omos/parallax/parallax_0000_parallax.png");
-    background-repeat: no-repeat;
-    background-position-y: 200%;
-    background-size: 120%;
+    height: 160vh;
+    position: relative;
 }
+#sky{
+    background-image: url("../images/omos/parallax/sky.png");
+    background-repeat: no-repeat;
+    background-position-y: 0%;
+    background-size: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#mountains-back{
+    background-image: url("../images/omos/parallax/back-mountains.png");
+    background-repeat: no-repeat;
+    background-position-y: 60%;
+    background-size: 70%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#mountain-front{
+    background-image: url("../images/omos/parallax/front-mountain.png");
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#car{
+    background-image: url("../images/omos/parallax/car.png");
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#quote{
+    position: absolute;
+    top: 40%;
+    border: none;
+    visibility: hidden;
+    font-size: 5rem;
+    filter: drop-shadow(0px 0 5px rgb(0, 0, 0));
+}
+
+.show-quote{
+    visibility: visible !important;
+    animation: animUp 1s ease-in-out forwards;
+}
+
 
 
 @keyframes animIn {
     from{transform: translateX(-100%); opacity: 0;}
     90%{transform: translateX(1%);}
     to{transform: translateX(0%); opacity: 1;}
+}
+@keyframes animUp {
+    from{transform: translateY(100%); opacity: 0;}
+    to{transform: translateY(0%); opacity: 1;}
+}
+
+#tekstblok{
+    margin: 0 100px 50px 100px;
+}
+
+#tekstblok h3{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+#tekstblok p{
+    color: white;
+    line-height: 1.5rem;
+    columns: 2;
+    column-gap: 50px;
+}
+
+#container{
+    display: flex;
+    justify-content: space-around;
+}
+
+#telefon, #mail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container img{
+    width: 50px;
+    margin: 0 auto 20px auto;
+    filter: invert(45%) sepia(99%) saturate(369%) hue-rotate(94deg) brightness(103%) contrast(74%)
+}
+
+#container p{
+    text-align: center;
+    margin: 5px 0 5px 0;
 }
 
