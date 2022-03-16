@@ -6,9 +6,11 @@ let dataStorage = window.sessionStorage;
 if (dataStorage.getItem("isAuthenticated")){
     const login = document.querySelector(".login");
     const profil = document.querySelector(".profil");
+    const logout = document.querySelector(".logout");
 
     login.remove();
     profil.style.display = "flex";
+    logout.style.display = "flex";
 }
 
 if (dataStorage.getItem("bil") == null) {
@@ -306,3 +308,8 @@ function bestil() {
 }
 
 
+function logout() {
+    window.sessionStorage.removeItem("token");
+    window.sessionStorage.removeItem("isAuthenticated");
+    window.location.href = "index.html"
+}

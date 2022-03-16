@@ -68,7 +68,25 @@ html, body{
 .om-os{
     margin: 0 20px 0 auto;
 }
-
+.logout{
+    background-color: var(--green);
+    padding: 12px 20px;
+    border-radius: 2000px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    transition: 0.2s;
+}
+.logout img{
+    height: 20px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.logout:hover{
+    transform: scale(1.06);
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
+}
 
 .wrapper{
     width: var(--page-width);

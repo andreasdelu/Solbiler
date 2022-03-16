@@ -6,12 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solbiler ApS | User</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="shortcut icon" href="../images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+    <div class="wrapper">
+        <header>
+            <div class="logo-login">
+                <a class="logo" href="../index.html"><img src="../images/logo.svg" alt="Solbiler ApS Logo"></a>
+                <a href="../om-os.html" class="om-os"><p>Om os</p></a>
+                <a href="#" class="profil"><p>Min profil</p></a>
+                <a class="logout" href="javascript:logout();"><img src="../images/logout.svg" alt="logout"></a>
+            </div>
+        </header>
+        <h1>Din Profil</h1>
 
-    <h1>Tillykke du er logget ind :)</h1>
-    <a href="javascript:logout();">Log-ud</a>
-    <a href="../index.html">Forside</a>
+        <div id="user-container">
+            <img id="user-pic" src="../images/user.svg" alt="no profile pic">
+            <div id="info">
+                <p><span>Navn:</span> Rune Runesen</p>
+                <p><span>Email:</span> runesen@rune.dk</p>
+                <p><span>Telefon:</span> 23 87 32 43</p>
+                <p><span>Adresse:</span> Pisse stærkvej 243</p>
+                <p><span>Postnr. & By:</span> 8000, Aarhus C</p>
+                <p><span>Køn:</span> Stor dreng</p>
+                <p><span>Alder:</span> 130 år</p>
+
+            </div>
+        </div>
+
+        <footer>
+            <div id="footer-container">
+                <div id="footer-kontakt">
+                    <h5>Kontakt:</h5>
+                    <p>Telefon: 12 34 56 78</p>
+                    <p>Email: kontakt@solbiler.dk</p>
+                </div>
+                <div id="footer-adresse">
+                    <h5>Adresse:</h5>
+                    <p>Vestre Brorzvej 132</p>
+                    <p>6709, Brorztrup</p>
+                </div>
+            </div>
+            Copyright: Solbiler ApS 1987-2022
+        </footer>
+    </div>
     <script src="user.js"></script>
 </body>
 </html>

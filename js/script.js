@@ -24,9 +24,11 @@ if (day <=9) {
 if (dataStorage.getItem("isAuthenticated")){
     const login = document.querySelector(".login");
     const profil = document.querySelector(".profil");
+    const logout = document.querySelector(".logout");
 
     login.remove();
     profil.style.display = "flex";
+    logout.style.display = "flex";
 }
 
 
@@ -179,3 +181,9 @@ function beregnLejeudgift(bilPris, bilTillaeg, moms) {
     return Math.round((bilPris + ((bilTillaeg + 100) * beregnAntalLejedage())) * moms);
 }
 
+
+function logout() {
+    window.sessionStorage.removeItem("token");
+    window.sessionStorage.removeItem("isAuthenticated");
+    window.location.href = "index.html"
+}

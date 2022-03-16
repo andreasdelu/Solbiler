@@ -1,9 +1,11 @@
 if (storage.getItem("isAuthenticated")){
     const login = document.querySelector(".login");
     const profil = document.querySelector(".profil");
+    const logout = document.querySelector(".logout");
 
     login.remove();
     profil.style.display = "flex";
+    logout.style.display = "flex";
 }
 
 const business = document.getElementById("business");
@@ -59,3 +61,9 @@ let observer2 = new IntersectionObserver((entries) => {
 
 observer2.observe(quote);
 
+
+function logout() {
+    window.sessionStorage.removeItem("token");
+    window.sessionStorage.removeItem("isAuthenticated");
+    window.location.href = "index.html"
+}
