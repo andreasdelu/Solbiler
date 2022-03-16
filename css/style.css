@@ -796,7 +796,7 @@ footer h5{
     .bestilling{
         font-size: 1.1rem;
     }
-    #user-info-extras, .profil, .profil p, .login, #clear, .hero-pic, .booknu, footer, #print{
+    #user-info-extras, .om-os, .profil, .profil p, .login, #clear, .hero-pic, .booknu, footer, #print{
         display: none;
     }
 }
