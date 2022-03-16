@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solbiler ApS | Kvittering</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zga3luw.css">
+    <style>
+        body{
+            font-family: "halcom", sans-serif;;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            margin: 0 auto;
+            width: 400px;
+        }
+        #container p{
+            text-align: right;
+        }
+        b{
+            float: left;
+        }
+        #udstyr{
+            margin-bottom: 30px;
+        }
+        #udstyr p{
+            text-align: center;
+        }
+        strong{
+            margin-bottom: 10px;
+        }
+
+        .pris{
+            border-bottom: 3px solid black;
+            border-top: 3px solid black;
+            font-size: 1.5rem;
+            padding: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Kvittering/Data der bliver sendt til server :)</h1>
+    <div id="container">
+        <p class="navn"></p>
+        <p class="mail"></p>
+        <p class="telefon"></p>
+        <p class="postnummer"></p>
+        <p class="by"></p>
+        <p class="adresse"></p>
+        <p class="brand"></p>
+        <p class="model"></p>
+        <p class="afhent"></p>
+        <p class="aflever"></p>
+        <p class="lejedage"></p>
+        <div id="udstyr">
+            <p><strong>UDSTYR:</strong></p>
+        </div>
+        <p class="pris"></p>
+    </div>
+
+
+    <script>
+        const storage = window.sessionStorage;
+
+        if (storage.getItem("bestilling") == null) {
+            window.location.href = "index.html"
+            throw new Error("No order found.");
+        }
+
+        const bestilling = JSON.parse(storage.getItem("bestilling"))
+
+        document.querySelector(".navn").innerHTML = "<b>NAVN:</b> " + bestilling.kunde.navn
+        document.querySelector(".mail").innerHTML = "<b>EMAIL:</b> " + bestilling.kunde.mail
+        document.querySelector(".telefon").innerHTML = "<b>TELEFON:</b> " + bestilling.kunde.telefon
+        document.querySelector(".postnummer").innerHTML = "<b>POSTNUMMER:</b> " + bestilling.kunde.postnummer
+        document.querySelector(".by").innerHTML = "<b>BY:</b> " + bestilling.kunde.by
+        document.querySelector(".adresse").innerHTML = "<b>ADRESSE:</b> " + bestilling.kunde.adresse
+        document.querySelector(".brand").innerHTML = "<b>MÆRKE:</b> " + bestilling.bil.mærke
+        document.querySelector(".model").innerHTML = "<b>MODEL:</b> " + bestilling.bil.model
+        document.querySelector(".afhent").innerHTML = "<b>AFHENTNING:</b> " + bestilling.afhentning
+        document.querySelector(".aflever").innerHTML = "<b>AFLEVERING:</b> " + bestilling.aflevering
+        document.querySelector(".lejedage").innerHTML = "<b>ANTAL LEJEDAGE:</b> " + bestilling.Lejedage
+        document.querySelector(".pris").innerHTML = "<b>PRIS I ALT:</b> DKK " + bestilling.total + ",-"
+
+        const udstyrListe = document.getElementById("udstyr")
+
+        for (const udstyr of bestilling.valgtUdstyr) {
+            const item = document.createElement("p");
+            item.innerHTML = udstyr;
+            udstyrListe.appendChild(item);
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

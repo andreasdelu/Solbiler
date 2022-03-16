@@ -91,6 +91,7 @@ function clearCart() {
     dataStorage.removeItem("bil");
     dataStorage.removeItem("valgtUdstyr");
     dataStorage.removeItem("afhent");
+    dataStorage.removeItem("bestilling");
     vogn.innerHTML = '';
     window.location.href = "index.html";
     
@@ -304,7 +305,8 @@ function bestil() {
         Lejedage: lejedage,
         total: nyPris
     };
-    orderForm.insertAdjacentText("afterend", JSON.stringify(orderInfo));
+    window.location.href = "kvittering.html";
+    dataStorage.setItem("bestilling", JSON.stringify(orderInfo));
 }
 
 
