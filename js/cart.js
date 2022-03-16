@@ -292,8 +292,14 @@ function bestil() {
     })
     let orderInfo = {
         kunde,
-        bil: bil,
+        bil: {
+            mærke: bil.brand,
+            model: bil.model
+        },
         valgtUdstyr,
+        afhentning: afhent,
+        aflevering: aflever,
+        Lejedage: lejedage,
         total: nyPris
     };
     orderForm.insertAdjacentText("afterend", JSON.stringify(orderInfo));

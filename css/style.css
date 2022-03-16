@@ -1,7 +1,7 @@
 @import url("https://use.typekit.net/zga3luw.css");
 
 :root{
-    --page-width: 100vw;
+    --page-width: 90vw;
 
     --green: #2fac66;
 
@@ -22,7 +22,7 @@ html, body{
     margin: 10px auto;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 100%;
 }
 
 .logo{
@@ -179,7 +179,7 @@ select{
 #valuta{
     display: block;
     padding: 5px;
-    margin: 25px 25px 0 auto;
+    margin: 25px 0 0 auto;
     
 }
 ::-webkit-calendar-picker-indicator {
