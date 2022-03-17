@@ -305,7 +305,10 @@ function bestil() {
         Lejedage: lejedage,
         total: nyPris
     };
-    window.location.href = "kvittering.html";
+
+    spawnPrintModal();
+    fyldKundeInfo(orderInfo.kunde);
+
     dataStorage.setItem("bestilling", JSON.stringify(orderInfo));
 }
 
@@ -314,4 +317,52 @@ function logout() {
     window.sessionStorage.removeItem("token");
     window.sessionStorage.removeItem("isAuthenticated");
     window.location.href = "index.html"
+}
+
+/* Print modal logic */
+
+const printModal = document.getElementById("printModal");
+
+document.getElementById("printYes").addEventListener("click", () => {
+    printModal.style.display = "none";
+    window.print();
+    window.location.href = "kvittering.html";
+})
+
+document.getElementById("printNo").addEventListener("click", () => {
+    window.location.href = "kvittering.html";
+})
+
+document.querySelector(".printModalBG").addEventListener("click", () => {
+    removePrintModal();
+})
+
+function spawnPrintModal() {
+    printModal.style.display = "flex";
+}
+
+function removePrintModal() {
+    printModal.style.display = "none";
+}
+
+function fyldKundeInfo(kunde) {
+    const infoPunkter = document.querySelectorAll(".print-info");
+
+    infoPunkter[0].innerHTML += kunde.navn;
+    infoPunkter[1].innerHTML += kunde.mail;
+    infoPunkter[2].innerHTML += kunde.telefon;
+    infoPunkter[3].innerHTML += kunde.postnummer;
+    infoPunkter[4].innerHTML += kunde.by;
+    infoPunkter[5].innerHTML += kunde.adresse;
+
+    let date = new Date();
+
+    let ordrernummer = String(date.getFullYear()).slice(-2) + "-" + String(Math.round((date.getTime()))).slice(-8)
+
+    let dato = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+
+    document.getElementById("ordrernum").innerHTML += ordrernummer;
+    document.getElementById("print-dato").innerHTML += dato;
+
+
 }

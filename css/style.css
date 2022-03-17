@@ -541,7 +541,19 @@ h2{
     height: 100vh;
 }
 
-.modalBG{
+#printModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modalBG, .printModalBG{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.43);
@@ -610,6 +622,54 @@ h2{
     outline: 4px solid red;
     transition: 0.2s;
     animation: shake 0.2s 0.2s ease;
+}
+
+#printModal img{
+    display: block;
+    width: 50px;
+    margin: 20px auto 0px auto;
+}
+
+#printYes{
+    display: block;
+    margin: 30px auto 30px auto;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10000px;
+    background-color: white;
+    outline: 2px solid white;
+    color: var(--green);
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#printYes:hover{
+    background-color: var(--green);
+    outline: 2px solid white;
+    color: white;
+}
+
+#printNo{
+    display: block;
+    margin: 20px auto;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: 2px solid white;
+    padding: 5px 8px;
+    border-radius: 2000px;
+    color: white;
+}
+
+#printNo:hover{
+    background-color: white;
+    color: var(--green);
+}
+
+#kunde-oplysninger-print{
+    display: none;
 }
 
 footer{
@@ -781,11 +841,12 @@ footer h5{
         margin: 0 !important;
         padding: 0;
         min-height: none;
-        display: block;
+        display: flex;
+        justify-content: center;
     }
     #cart{
         width: 50vw;
-        margin-top: 10px;
+        margin: 10px 50px 0 0;
     }
     .logo{
         height: 80px;
@@ -796,7 +857,29 @@ footer h5{
     .bestilling{
         font-size: 1.1rem;
     }
-    #user-info-extras, .om-os, .profil, .profil p, .login, #clear, .hero-pic, .booknu, footer, #print{
+    #user-info-extras, .om-os, .profil, .profil p, .login, #clear, .hero-pic, .booknu, footer, #print, #printModal{
         display: none;
     }
+    #kunde-oplysninger-print{
+        display: block;
+        margin: 0;
+        width: 280px;
+        margin-top: 18px;
+    }
+    #kunde-oplysninger-print p{
+        text-align: right;
+    }
+    #kunde-oplysninger-print b{
+        float: left;
+    }
+    #ordrernum{
+        border-bottom: 2px solid var(--green);
+        padding-bottom: 5px;
+    }
+    #print-dato{
+        border-top: 2px solid var(--green);
+        padding-top: 5px;
+    }
 }
+
+
