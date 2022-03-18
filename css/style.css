@@ -861,7 +861,7 @@ footer h5{
         display: none;
     }
     #kunde-oplysninger-print{
-        display: block;
+        /* display: none; */
         margin: 0;
         width: 280px;
         margin-top: 18px;

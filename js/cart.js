@@ -324,6 +324,7 @@ function logout() {
 const printModal = document.getElementById("printModal");
 
 document.getElementById("printYes").addEventListener("click", () => {
+    document.getElementById("kunde-oplysninger-print").style.display = "block"
     printModal.style.display = "none";
     window.print();
     window.location.href = "kvittering.html";
