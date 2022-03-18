@@ -843,10 +843,11 @@ footer h5{
         min-height: none;
         display: flex;
         justify-content: center;
+        max-width: 99vw;
     }
     #cart{
-        width: 50vw;
-        margin: 10px 50px 0 0;
+        width: 45vw;
+        margin: 10px 40px 0 0;
     }
     .logo{
         height: 80px;
@@ -861,7 +862,7 @@ footer h5{
         display: none;
     }
     #kunde-oplysninger-print{
-        /* display: none; */
+        display: none;
         margin: 0;
         width: 280px;
         margin-top: 18px;
